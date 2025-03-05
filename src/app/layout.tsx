@@ -1,10 +1,11 @@
 import "./globals.css"
+import "keen-slider/keen-slider.min.css"
 
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 
 const inter = Inter({
-	weight: ["400"],
+	weight: ["400", "500", "600", "700", "800", "900"],
 	subsets: ["latin"],
 	variable: "--font-inter",
 })
@@ -21,7 +22,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="pt-BR" className={`${inter.variable}`}>
-			<body>{children}</body>
+			<body className="bg-background antialiased">{children}</body>
 		</html>
 	)
 }

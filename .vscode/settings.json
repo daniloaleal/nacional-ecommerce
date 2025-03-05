@@ -2,4 +2,9 @@
     "editor.codeActionsOnSave": {
         "source.fixAll": "always" 
     },
+    "cSpell.words": [
+        "acessorios",
+        "iswhitebackground",
+        "plussize"
+    ],
 }

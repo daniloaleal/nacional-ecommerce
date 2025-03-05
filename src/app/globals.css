@@ -2,4 +2,8 @@
 
 @theme {
     --font-sans: var(--font-inter);
+
+    --color-background: #F0F0F0;
+
+    --color-yellow-200: #FFE6B0;
 }
