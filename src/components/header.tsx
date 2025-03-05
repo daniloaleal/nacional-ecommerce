@@ -54,9 +54,15 @@ export const Header = ({
 					<Link href="/catalog?category=category=promocoes">
 						Novidades e Promoções
 					</Link>
-					<Link href="/catalog?category=category=feminino">Feminino</Link>
-					<Link href="/catalog?category=category=masculino">Masculino</Link>
-					<Link href="/catalog?category=category=criancas">Crianças</Link>
+					<Link href="/catalog?category=category=feminino">
+						Feminino
+					</Link>
+					<Link href="/catalog?category=category=masculino">
+						Masculino
+					</Link>
+					<Link href="/catalog?category=category=criancas">
+						Crianças
+					</Link>
 				</nav>
 			</div>
 
