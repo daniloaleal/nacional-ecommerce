@@ -67,14 +67,14 @@ export const Header = ({
 			</div>
 
 			<div className="flex items-center gap-4">
-				<SearchInputRoot className="max-w-44 rounded-full border-2 border-inherit px-4 py-2.5 md:border-none md:p-0">
+				<SearchInputRoot className="max-w-44 rounded-full border-2 border-inherit px-4 py-1.5 md:border-none md:p-0">
 					<SearchInputField defaultValue={searchText} />
 				</SearchInputRoot>
 
-				<div className="flex gap-4">
+				<div className="flex items-center gap-4">
 					<Heart className="hidden cursor-pointer lg:block" />
 					<ShoppingBagButton />
-					<Menu className="size-7 lg:hidden" />
+					<Menu className="size-8 lg:hidden" />
 				</div>
 			</div>
 		</header>

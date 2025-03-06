@@ -26,7 +26,7 @@ export const Counter = ({ timeUnitClassName }: Counter) => {
 	})
 
 	return (
-		<div className="flex gap-2.5 text-white">
+		<div className="flex gap-1.5 text-white">
 			<div
 				className={twMerge(
 					"flex size-9 items-center justify-center rounded-sm bg-black p-1 font-medium",

@@ -1,4 +1,4 @@
-import { Heart, ShoppingBag } from "lucide-react"
+import { Heart } from "lucide-react"
 import Image, { StaticImageData } from "next/image"
 import Link from "next/link"
 
@@ -29,14 +29,10 @@ export const ProductCard = ({ product }: ProductCardProps) => (
 			/>
 
 			{product.comparisonPrice && (
-				<span className="absolute top-0 right-0 bg-red-600 px-2.5 font-bold text-white">
+				<span className="absolute top-0 right-0 bg-red-600 px-2.5 text-xs font-bold text-white sm:text-base">
 					{calculateDiscount(product.price, product.comparisonPrice)}
 				</span>
 			)}
-
-			<button className="absolute right-2.5 bottom-2.5 cursor-pointer rounded-full bg-black p-2.5 opacity-70 sm:hidden">
-				<ShoppingBag className="text-white" />
-			</button>
 
 			<button className="absolute top-2.5 left-2.5 cursor-pointer rounded-full bg-black p-2.5 opacity-70">
 				<Heart className="text-white" />
