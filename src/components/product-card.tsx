@@ -29,7 +29,7 @@ export const ProductCard = ({ product }: ProductCardProps) => (
 			/>
 
 			{product.comparisonPrice && (
-				<span className="absolute top-0 right-0 bg-red-600 px-2.5 text-xs font-bold text-white sm:text-base">
+				<span className="absolute top-0 right-0 bg-red-600 px-2.5 text-xs font-bold text-white max-sm:py-0.5 sm:text-base">
 					{calculateDiscount(product.price, product.comparisonPrice)}
 				</span>
 			)}

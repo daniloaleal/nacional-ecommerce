@@ -51,18 +51,12 @@ export const Header = ({
 				</Link>
 
 				<nav className="hidden gap-8 lg:flex">
-					<Link href="/catalog?category=category=promocoes">
+					<Link href="/catalog?category=promocoes">
 						Novidades e Promoções
 					</Link>
-					<Link href="/catalog?category=category=feminino">
-						Feminino
-					</Link>
-					<Link href="/catalog?category=category=masculino">
-						Masculino
-					</Link>
-					<Link href="/catalog?category=category=criancas">
-						Crianças
-					</Link>
+					<Link href="/catalog?category=feminino">Feminino</Link>
+					<Link href="/catalog?category=masculino">Masculino</Link>
+					<Link href="/catalog?category=criancas">Crianças</Link>
 				</nav>
 			</div>
 
