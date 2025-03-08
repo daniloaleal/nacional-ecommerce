@@ -49,19 +49,19 @@ export const ProductCard = ({
 			</button>
 		</div>
 		<div className="mt-2.5">
-			<h1 className="text-sm sm:text-2xl">{product.name}</h1>
-			<div className="mt-1 flex items-center gap-5">
+			<h1 className="text-xs sm:text-base">{product.name}</h1>
+			<div className="mt-1 flex items-center gap-3">
 				{product.comparisonPrice && (
 					<span className="text-xs text-gray-800 sm:text-base">
 						<del>{formatPrice(product.comparisonPrice)}</del>
 					</span>
 				)}
 
-				<h2 className="font-bold sm:text-2xl">
+				<h2 className="text-xs font-bold sm:text-xl">
 					{formatPrice(product.price)}
 				</h2>
 			</div>
-			<span className="text-xs text-gray-500 sm:text-sm">
+			<span className="text-xs text-gray-500 sm:text-base">
 				ou {product.installment.payments}x de{" "}
 				{formatPrice(product.installment.price)}*
 			</span>

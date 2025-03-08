@@ -6,4 +6,9 @@
     --color-background: #F0F0F0;
 
     --color-yellow-200: #FFE6B0;
+
+    --color-gray-400: #999999;
+    --color-gray-600: #595959;
+
+    --breakpoint-sm-plus: 824px
 }

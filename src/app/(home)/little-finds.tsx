@@ -51,25 +51,25 @@ export const LittleFinds = () => {
 	]
 
 	return (
-		<section className="mx-auto mt-20 w-full max-w-[1289px] pl-5 lg:px-5">
-			<h1 className="text-2xl font-bold lg:text-4xl">
+		<section className="sm-plus:px-5 mx-auto mt-20 w-full max-w-[1289px] pl-5">
+			<h1 className="sm-plus:text-4xl text-2xl font-bold">
 				Achadinhos da Nacional
 			</h1>
-			<div className="mt-5 flex gap-9 lg:gap-20">
+			<div className="sm-plus:gap-20 mt-5 flex gap-9">
 				{categories.map((_, index) => (
 					<button
 						data-selected={categoryIndexSelected === index}
-						className="cursor-pointer text-sm font-semibold data-[selected=true]:border-b-4 lg:text-xl"
+						className="sm-plus:text-xl cursor-pointer text-sm font-semibold data-[selected=true]:border-b-4"
 						onClick={() => setCategoryIndexSelected(index)}
 						key={index}
 					>{`CATEG. ${index + 1}`}</button>
 				))}
 			</div>
-			<div className="mt-7 flex grid-cols-4 gap-2.5 max-lg:overflow-x-auto lg:grid lg:gap-6">
+			<div className="max-sm-plus:overflow-x-auto sm-plus:grid sm-plus:gap-6 mt-7 flex grid-cols-4 gap-2.5">
 				{categories[categoryIndexSelected].map((product, index) => (
 					<ProductCard key={index} product={product} />
 				))}
-				<div className="flex min-w-[200px] items-center justify-center lg:hidden">
+				<div className="sm-plus:hidden flex min-w-[200px] items-center justify-center">
 					<Link
 						href="/catalog?category=achadinhos"
 						className="rounded-full bg-black px-10 py-2.5 text-white"
