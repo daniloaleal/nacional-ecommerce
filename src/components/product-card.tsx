@@ -1,10 +1,12 @@
 import { Heart } from "lucide-react"
 import Image, { StaticImageData } from "next/image"
 import Link from "next/link"
+import { ComponentProps } from "react"
+import { twMerge } from "tailwind-merge"
 
 import { calculateDiscount, formatPrice } from "@/utils/number"
 
-interface ProductCardProps {
+interface ProductCardProps extends ComponentProps<"a"> {
 	product: {
 		id: string
 		image: StaticImageData
@@ -16,10 +18,18 @@ interface ProductCardProps {
 	}
 }
 
-export const ProductCard = ({ product }: ProductCardProps) => (
+export const ProductCard = ({
+	product,
+	className,
+	...props
+}: ProductCardProps) => (
 	<Link
-		className="group block max-w-[194px] sm:max-w-[290px]"
+		className={twMerge(
+			"group block max-w-[194px] sm:max-w-[290px]",
+			className
+		)}
 		href={`/product/${product.id}`}
+		{...props}
 	>
 		<div className="relative">
 			<Image

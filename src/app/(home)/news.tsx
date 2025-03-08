@@ -1,12 +1,19 @@
+import Image, { StaticImageData } from "next/image"
 import Link from "next/link"
 import { ReactNode } from "react"
 import { ClassNameValue, twMerge } from "tailwind-merge"
+
+import acessoriosBannerNewsImg from "@/assets/acessorios-banner-news.png"
+import calcadosBannerNewsImg from "@/assets/calcados-banner-news.png"
+import perfumesBannerNewsImg from "@/assets/perfumes-banner-news.png"
+import semijoiasBannerNewsImg from "@/assets/semijoias-banner-news.png"
 
 interface NewsCardProps {
 	title: string
 	category?: string
 	startingAt?: string
 	className: ClassNameValue
+	banner: StaticImageData
 }
 
 interface NewsRowProps {
@@ -18,6 +25,7 @@ const NewsCard = ({
 	startingAt,
 	category,
 	className,
+	banner,
 }: NewsCardProps) => (
 	<div
 		className={twMerge(
@@ -25,7 +33,11 @@ const NewsCard = ({
 			className
 		)}
 	>
-		{/* IMAGE HERE */}
+		<Image
+			className="h-full w-full object-cover"
+			src={banner}
+			alt="banner"
+		/>
 
 		<div className="absolute bottom-10 left-10 text-white">
 			{category && (
@@ -44,7 +56,7 @@ const NewsCard = ({
 			)}
 			<Link
 				href="/"
-				className="rounded-full border px-11 py-2 text-sm font-semibold uppercase lg:text-base"
+				className="rounded-full border-3 px-11 py-2 text-sm font-medium uppercase lg:text-base"
 			>
 				COMPRAR
 			</Link>
@@ -58,17 +70,21 @@ const NewsRow = ({ children }: NewsRowProps) => (
 
 export const News = () => (
 	<div className="mx-auto mt-16 w-full max-w-[1289px] space-y-4 pl-5 lg:px-5">
-		<h1 className="text-2xl font-bold sm:text-5xl">
+		<h1 className="text-2xl font-bold sm:text-4xl">
 			Descubra as novidades
 		</h1>
 
 		<div className="flex gap-2.5 overflow-auto lg:flex-col lg:gap-4 lg:overflow-hidden">
 			<NewsRow>
-				<NewsCard className="lg:h-[550px] lg:flex-1" title="BLUSAS" />
+				<NewsCard
+					className="lg:h-[550px] lg:flex-1"
+					title="PERFUMES"
+					banner={perfumesBannerNewsImg}
+				/>
 				<NewsCard
 					className="lg:h-[550px] lg:max-w-[452px]"
-					title="POLOS"
-					startingAt="59,90"
+					title="CALÇADOS"
+					banner={calcadosBannerNewsImg}
 				/>
 			</NewsRow>
 			<NewsRow>
@@ -76,12 +92,23 @@ export const News = () => (
 					className="lg:h-[440px] lg:max-w-[366px]"
 					category="FEMININO"
 					title="SEMIJOIAS"
+					banner={semijoiasBannerNewsImg}
 				/>
 				<NewsCard
 					className="lg:h-[440px] lg:flex-1"
-					title="ACESSÓRIOS E CALÇADOS"
+					title="ACESSÓRIOS"
+					banner={acessoriosBannerNewsImg}
 				/>
 			</NewsRow>
+		</div>
+
+		<div className="flex justify-center">
+			<Link
+				href="/catalog?category=news"
+				className="rounded-full bg-black px-11 py-4 font-semibold text-white uppercase max-lg:hidden"
+			>
+				VER TUDO EM NOVIDADES
+			</Link>
 		</div>
 	</div>
 )
