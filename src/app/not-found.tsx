@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function NotFound() {
 	return (
 		<>
-			<Header alwaysBackgroundWhite={true} />
+			<Header alwaysBackgroundWhite />
 
 			<div className="flex h-screen w-full flex-col items-center justify-center px-10">
 				<Image src={notFoundImg} alt="not found" />

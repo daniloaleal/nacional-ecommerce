@@ -3,7 +3,8 @@
 import { Heart, Menu } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { ComponentProps, useEffect, useState } from "react"
+import { twMerge } from "tailwind-merge"
 
 import nacionalImg from "@/assets/nacional.svg"
 import nacionalBlackImg from "@/assets/nacionalBlack.png"
@@ -11,7 +12,7 @@ import nacionalBlackImg from "@/assets/nacionalBlack.png"
 import { SearchInputField, SearchInputRoot } from "./search-input"
 import { ShoppingBagButton } from "./shopping-bag-button"
 
-interface HeaderProps {
+interface HeaderProps extends ComponentProps<"header"> {
 	searchText?: string
 	alwaysBackgroundWhite?: boolean
 }
@@ -19,6 +20,8 @@ interface HeaderProps {
 export const Header = ({
 	searchText = "",
 	alwaysBackgroundWhite = false,
+	className,
+	...props
 }: HeaderProps) => {
 	const [isWhiteBackground, setIsWhiteBackground] = useState(
 		alwaysBackgroundWhite
@@ -39,7 +42,11 @@ export const Header = ({
 	return (
 		<header
 			data-iswhitebackground={isWhiteBackground}
-			className="fixed top-0 z-10 flex w-full items-center justify-between px-6 py-7 text-gray-100 data-[iswhitebackground=true]:bg-white data-[iswhitebackground=true]:text-black lg:px-12"
+			className={twMerge(
+				"fixed top-0 z-10 flex w-full items-center justify-between px-6 py-7 text-gray-100 data-[iswhitebackground=true]:bg-white data-[iswhitebackground=true]:text-black lg:px-12",
+				className
+			)}
+			{...props}
 		>
 			<div className="flex items-center gap-9">
 				<Link href="/">

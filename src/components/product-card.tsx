@@ -50,7 +50,7 @@ export const ProductCard = ({
 		</div>
 		<div className="mt-2.5">
 			<h1 className="text-xs sm:text-base">{product.name}</h1>
-			<div className="mt-1 flex items-center gap-3">
+			<div className="mt-1 flex items-center gap-5">
 				{product.comparisonPrice && (
 					<span className="text-xs text-gray-800 sm:text-base">
 						<del>{formatPrice(product.comparisonPrice)}</del>

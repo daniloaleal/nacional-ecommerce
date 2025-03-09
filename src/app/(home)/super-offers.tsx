@@ -10,7 +10,7 @@ export const SupperOffers = () => {
 		{
 			id: "id_123123dev",
 			image: productModelPhotoImg,
-			name: "Nome do produto",
+			name: "Nome do produtoNome do produtoNome do produto",
 			comparisonPrice: 10900,
 			price: 7999,
 			installment: {

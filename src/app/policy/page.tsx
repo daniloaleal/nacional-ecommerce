@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function Policy() {
 	return (
 		<>
-			<Header alwaysBackgroundWhite={true} />
+			<Header alwaysBackgroundWhite />
 
 			<div className="mt-40 px-5 md:px-24">
 				<h1 className="mb-7 text-xl font-bold md:text-4xl">
