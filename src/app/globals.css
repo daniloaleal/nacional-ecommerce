@@ -10,5 +10,6 @@
     --color-gray-400: #999999;
     --color-gray-600: #595959;
 
-    --breakpoint-sm-plus: 824px
+    --breakpoint-sm-plus: 824px;
+    --breakpoint-xxl: 1424px;
 }

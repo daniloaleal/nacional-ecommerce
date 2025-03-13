@@ -9,7 +9,7 @@ interface LocalizationProps {
 }
 
 export const Localization = ({ paths }: LocalizationProps) => (
-	<div className="flex items-center text-xl">
+	<div className="flex items-center">
 		<Link
 			className="flex items-center gap-1.5 font-medium text-[#B3B3B3]"
 			href="/"
