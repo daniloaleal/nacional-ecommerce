@@ -4,6 +4,9 @@ import "keen-slider/keen-slider.min.css"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 
+import { FavoritesProvider } from "@/hooks/useFavorites"
+import { ShoppingCartProvider } from "@/hooks/useShoppingCart"
+
 import { Footer } from "./footer"
 
 const inter = Inter({
@@ -24,8 +27,12 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="pt-BR" className={`${inter.variable}`}>
-			<body className="bg-background overflow-x-hidden antialiased">
-				{children} <Footer />
+			<body className="bg-background box-border overflow-x-hidden antialiased">
+				<ShoppingCartProvider>
+					<FavoritesProvider>
+						{children} <Footer />
+					</FavoritesProvider>
+				</ShoppingCartProvider>
 			</body>
 		</html>
 	)

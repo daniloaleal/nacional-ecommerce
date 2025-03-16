@@ -1,6 +1,6 @@
 "use client"
 
-import { Heart, Menu } from "lucide-react"
+import { Menu } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { ComponentProps, useEffect, useState } from "react"
@@ -9,8 +9,9 @@ import { twMerge } from "tailwind-merge"
 import nacionalImg from "@/assets/nacional.svg"
 import nacionalBlackImg from "@/assets/nacionalBlack.png"
 
+import { FavoritesButton } from "./favorites"
 import { SearchInputField, SearchInputRoot } from "./search-input"
-import { ShoppingBagButton } from "./shopping-bag-button"
+import { ShoppingBagButton } from "./shopping-bag"
 
 interface HeaderProps extends ComponentProps<"header"> {
 	searchText?: string
@@ -73,7 +74,7 @@ export const Header = ({
 				</SearchInputRoot>
 
 				<div className="flex items-center gap-4">
-					<Heart className="hidden cursor-pointer lg:block" />
+					<FavoritesButton />
 					<ShoppingBagButton />
 					<Menu className="size-8 lg:hidden" />
 				</div>

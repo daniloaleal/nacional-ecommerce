@@ -1,7 +1,8 @@
 import { ArrowLeft } from "lucide-react"
+import Link from "next/link"
 
 import { Header } from "@/components/header"
-import { ShoppingBagButton } from "@/components/shopping-bag-button"
+import { ShoppingBagButton } from "@/components/shopping-bag"
 
 import { Actions } from "./actions"
 import { BestSellers } from "./best-sellers"
@@ -17,7 +18,9 @@ export default function Product() {
 			<Header alwaysBackgroundWhite className="max-lg:hidden" />
 
 			<header className="flex items-center justify-between bg-white px-4 pt-11 pb-5 lg:hidden">
-				<ArrowLeft className="size-8" />
+				<Link href="/">
+					<ArrowLeft className="size-8" />
+				</Link>
 				<h1 className="text-xl font-bold">Detalhes do produto</h1>
 				<ShoppingBagButton />
 			</header>
