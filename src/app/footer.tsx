@@ -32,22 +32,22 @@ export const Footer = () => {
 			{
 				icon: <MessageSquareShare className="size-7" />,
 				text: "Atendimento",
-				href: "/",
+				href: "mailto:contato@usenacional.com.br?subject=Atendimento%20Nacional%20Online&body=Ol%C3%A1,%20preciso%20de%20ajuda:%0A%0A",
 			},
-			{
-				icon: <Mailbox className="size-7" />,
-				text: "Status do pedido",
-				href: "/",
-			},
-			{
-				icon: <Container className="size-7" />,
-				text: "Devoluções",
-				href: "/",
-			},
+			// {
+			// 	icon: <Mailbox className="size-7" />,
+			// 	text: "Status do pedido",
+			// 	href: "/",
+			// },
+			// {
+			// 	icon: <Container className="size-7" />,
+			// 	text: "Devoluções",
+			// 	href: "/",
+			// },
 			{
 				icon: <SiWhatsapp className="size-7" />,
 				text: "Compre via WhatsApp",
-				href: "/",
+				href: "https://api.whatsapp.com/send?phone=5564984200970",
 			},
 		],
 		help: [
@@ -103,37 +103,38 @@ export const Footer = () => {
 					<div className="mt-10 space-y-9 text-gray-600">
 						{links.quickAccess.map(
 							({ icon, text, href }, index) => (
-								<Link
+								<a
+									target="_blank"
 									key={index}
 									href={href}
 									className="flex items-center gap-4"
 								>
 									{icon}
 									<span>{text}</span>
-								</Link>
+								</a>
 							)
 						)}
 					</div>
 				</div>
-				<div>
+				{/* <div>
 					<h1 className="font-semibold text-gray-600">Ajuda</h1>
 
 					<div className="mt-10 flex flex-col gap-4 text-gray-600">
 						{links.help.map(({ href, text }, index) => (
-							<Link key={index} href={href}>
+							<a target="_blank" key={index} href={href}>
 								{text}
-							</Link>
+							</a>
 						))}
 					</div>
-				</div>
+				</div> */}
 				<div>
 					<h1 className="font-semibold text-gray-600">Loja</h1>
 
 					<div className="mt-10 flex flex-col gap-4 text-gray-600">
 						{links.store.map(({ href, text }, index) => (
-							<Link key={index} href={href}>
+							<a target="_blank" key={index} href={href}>
 								{text}
-							</Link>
+							</a>
 						))}
 					</div>
 				</div>
@@ -141,8 +142,12 @@ export const Footer = () => {
 					<div className="space-y-3.5">
 						<h1>Redes sociais</h1>
 						<div className="flex items-center gap-2.5">
-							<FaInstagram className="size-8" />
-							<FaFacebook className="size-8" />
+							<a
+								href="https://www.instagram.com/usenacional/"
+								target="_blank"
+							>
+								<FaInstagram className="size-8" />
+							</a>
 						</div>
 					</div>
 					<div>
@@ -157,33 +162,34 @@ export const Footer = () => {
 						<div className="mt-2 ml-2 space-y-5 text-gray-600">
 							{links.quickAccess.map(
 								({ icon, text, href }, index) => (
-									<Link
+									<a
+										target="_blank"
 										key={index}
 										href={href}
 										className="flex items-center gap-4"
 									>
 										{icon}
 										<span>{text}</span>
-									</Link>
+									</a>
 								)
 							)}
 						</div>
 					</Details>
-					<Details title="Ajuda">
+					{/* <Details title="Ajuda">
 						<div className="mt-2 ml-2 flex flex-col gap-4 text-gray-600">
 							{links.help.map(({ href, text }, index) => (
-								<Link key={index} href={href}>
+								<a target="_blank" key={index} href={href}>
 									{text}
-								</Link>
+								</a>
 							))}
 						</div>
-					</Details>
+					</Details> */}
 					<Details title="Loja">
 						<div className="mt-2 ml-2 flex flex-col gap-4 text-gray-600">
 							{links.help.map(({ href, text }, index) => (
-								<Link key={index} href={href}>
+								<a target="_blank" key={index} href={href}>
 									{text}
-								</Link>
+								</a>
 							))}
 						</div>
 					</Details>
@@ -193,8 +199,12 @@ export const Footer = () => {
 					<div>
 						<h1>Redes sociais</h1>
 						<div className="flex items-center gap-2.5">
-							<FaInstagram className="size-8" />
-							<FaFacebook className="size-8" />
+							<a
+								href="https://www.instagram.com/usenacional/"
+								target="_blank"
+							>
+								<FaInstagram className="size-8" />
+							</a>
 						</div>
 					</div>
 					<div>

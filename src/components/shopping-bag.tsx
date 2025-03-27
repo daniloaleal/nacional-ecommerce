@@ -1,6 +1,6 @@
 "use client"
 
-import { ShoppingBag } from "lucide-react"
+import { ShoppingBag, X } from "lucide-react"
 import Image from "next/image"
 import { useState } from "react"
 
@@ -18,8 +18,13 @@ const ShoppingBagSideBar = ({
 	onRequestClose,
 	isOpen,
 }: ShoppingBagSideBarProps) => {
-	const { cart, increaseQuantity, decreaseQuantity, getTotalItemsPrice } =
-		useShoppingCart()
+	const {
+		cart,
+		removeFromCart,
+		increaseQuantity,
+		decreaseQuantity,
+		getTotalItemsPrice,
+	} = useShoppingCart()
 
 	return (
 		<SideBar
@@ -33,8 +38,15 @@ const ShoppingBagSideBar = ({
 					cart.map((item, index) => (
 						<div
 							key={index}
-							className="mb-5 flex gap-4 border-b border-[#ADADAD] pb-5"
+							className="relative mb-5 flex gap-4 border-b border-[#ADADAD] pb-5"
 						>
+							<button
+								className="absolute top-0 right-0 cursor-pointer"
+								onClick={() => removeFromCart(item.id)}
+							>
+								<X className="text-[#ADADAD]" />
+							</button>
+
 							<Image
 								className="h-[134px] w-[113px]"
 								src={item.image}

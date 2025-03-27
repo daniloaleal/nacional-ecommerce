@@ -5,10 +5,10 @@ import productModelPhotoImg from "@/assets/productModelPhoto.png"
 import { Counter } from "@/components/counter"
 import { ProductCard } from "@/components/product-card"
 
-export const SupperOffers = () => {
+export const SupperOffers = async () => {
 	const products = [
 		{
-			id: "id_123123dev",
+			id: "123dev",
 			image: productModelPhotoImg,
 			name: "Nome do produtoNome do produtoNome do produto",
 			comparisonPrice: 10900,
@@ -20,7 +20,7 @@ export const SupperOffers = () => {
 			sizes: ["PP", "P", "M", "G", "GG"],
 		},
 		{
-			id: "id_123123dev",
+			id: "123dev",
 			image: productModelPhotoImg,
 			name: "Nome do produto",
 			comparisonPrice: 10900,
@@ -32,7 +32,7 @@ export const SupperOffers = () => {
 			sizes: ["PP", "P", "M", "G", "GG"],
 		},
 		{
-			id: "id_123123dev",
+			id: "123dev",
 			image: productModelPhotoImg,
 			name: "Nome do produto",
 			comparisonPrice: 10900,
@@ -44,7 +44,7 @@ export const SupperOffers = () => {
 			sizes: ["PP", "P", "M", "G", "GG"],
 		},
 		{
-			id: "id_123123dev",
+			id: "123dev",
 			image: productModelPhotoImg,
 			name: "Nome do produto",
 			comparisonPrice: 10900,

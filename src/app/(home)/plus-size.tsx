@@ -56,7 +56,7 @@ export const PlusSize = () => {
 					<ProductCard
 						className="keen-slider__slide"
 						product={{
-							id: "id_123123dev",
+							id: "123dev",
 							image: productModelPhoto2Img,
 							name: "Nome do produto",
 							comparisonPrice: 10900,
@@ -71,7 +71,7 @@ export const PlusSize = () => {
 					<ProductCard
 						className="keen-slider__slide"
 						product={{
-							id: "id_123123dev",
+							id: "123dev",
 							image: productModelPhoto2Img,
 							name: "Nome do produto",
 							comparisonPrice: 10900,
@@ -86,7 +86,7 @@ export const PlusSize = () => {
 					<ProductCard
 						className="keen-slider__slide"
 						product={{
-							id: "id_123123dev",
+							id: "123dev",
 							image: productModelPhoto2Img,
 							name: "Nome do produto",
 							comparisonPrice: 10900,
@@ -101,7 +101,7 @@ export const PlusSize = () => {
 					<ProductCard
 						className="keen-slider__slide"
 						product={{
-							id: "id_123123dev",
+							id: "123dev",
 							image: productModelPhoto2Img,
 							name: "Nome do produto",
 							comparisonPrice: 10900,
@@ -116,7 +116,7 @@ export const PlusSize = () => {
 					<ProductCard
 						className="keen-slider__slide"
 						product={{
-							id: "id_123123dev",
+							id: "123dev",
 							image: productModelPhoto2Img,
 							name: "Nome do produto",
 							comparisonPrice: 10900,
@@ -131,7 +131,7 @@ export const PlusSize = () => {
 					<ProductCard
 						className="keen-slider__slide"
 						product={{
-							id: "id_123123dev",
+							id: "123dev",
 							image: productModelPhoto2Img,
 							name: "Nome do produto",
 							comparisonPrice: 10900,

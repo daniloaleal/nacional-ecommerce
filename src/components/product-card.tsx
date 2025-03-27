@@ -1,10 +1,11 @@
-import { Heart } from "lucide-react"
 import Image, { StaticImageData } from "next/image"
 import Link from "next/link"
 import { ComponentProps } from "react"
 import { twMerge } from "tailwind-merge"
 
 import { calculateDiscount, formatPrice } from "@/utils/number"
+
+import { FavoriteProductButton } from "./favorites"
 
 interface ProductCardProps extends ComponentProps<"a"> {
 	product: {
@@ -44,9 +45,7 @@ export const ProductCard = ({
 				</span>
 			)}
 
-			<button className="absolute top-2.5 left-2.5 cursor-pointer rounded-full bg-black p-2.5 opacity-70">
-				<Heart className="text-white" />
-			</button>
+			<FavoriteProductButton product={product} />
 		</div>
 		<div className="mt-2.5">
 			<h1 className="text-xs sm:text-base">{product.name}</h1>

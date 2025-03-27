@@ -28,6 +28,7 @@ interface ShoppingCartContextType {
 	decreaseQuantity: (id: string) => void
 	getTotalItems: () => number
 	getTotalItemsPrice: () => number
+	isInShoppingCart: (id: string) => boolean
 }
 
 interface ShoppingCartProviderProps {
@@ -105,6 +106,9 @@ export const ShoppingCartProvider = ({
 	const getTotalItemsPrice = () =>
 		cart.reduce((acc, item) => item.price * item.quantity + acc, 0)
 
+	const isInShoppingCart = (id: string) =>
+		!!cart.find(cartItem => cartItem.id === id)
+
 	return (
 		<ShoppingCartContext.Provider
 			value={{
@@ -115,6 +119,7 @@ export const ShoppingCartProvider = ({
 				decreaseQuantity,
 				getTotalItems,
 				getTotalItemsPrice,
+				isInShoppingCart,
 			}}
 		>
 			{children}

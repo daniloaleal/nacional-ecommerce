@@ -3,7 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 import notFoundImg from "@/assets/notFound.svg"
-import { Header } from "@/components/header"
+import { Header } from "@/components/header/header"
 
 export const metadata: Metadata = {
 	title: "Não encontrado - Nacional Online",

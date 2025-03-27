@@ -9,7 +9,7 @@ import {
 	useState,
 } from "react"
 
-interface FavoriteItem {
+export interface FavoriteItem {
 	id: string
 	name: string
 	price: number
@@ -20,7 +20,8 @@ interface FavoritesContextType {
 	favorites: FavoriteItem[]
 	addToFavorites: (item: FavoriteItem) => void
 	removeFromFavorites: (id: string) => void
-	isItemFavorited: (id: string) => void
+	toggleFavoriteItem: (item: FavoriteItem) => void
+	isItemFavorited: (id: string) => boolean
 }
 
 interface FavoritesProviderProps {
@@ -44,6 +45,9 @@ export const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
 		localStorage.setItem("favorites", JSON.stringify(favorites))
 	}, [favorites])
 
+	const isItemFavorited = (id: string) =>
+		!!favorites.find(favoriteItem => favoriteItem.id === id)
+
 	const addToFavorites = (item: FavoriteItem) =>
 		setFavorites(prevFavorites => {
 			const isExistingItem = prevFavorites.find(
@@ -58,8 +62,13 @@ export const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
 			prevFavorites.filter(item => item.id !== id)
 		)
 
-	const isItemFavorited = (id: string) =>
-		favorites.find(favoriteItem => favoriteItem.id === id)
+	const toggleFavoriteItem = (item: FavoriteItem) => {
+		if (isItemFavorited(item.id)) {
+			removeFromFavorites(item.id)
+		} else {
+			addToFavorites(item)
+		}
+	}
 
 	return (
 		<FavoritesContext.Provider
@@ -67,6 +76,7 @@ export const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
 				favorites,
 				addToFavorites,
 				removeFromFavorites,
+				toggleFavoriteItem,
 				isItemFavorited,
 			}}
 		>

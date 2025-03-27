@@ -1,7 +1,7 @@
 import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 
-import { Header } from "@/components/header"
+import { Header } from "@/components/header/header"
 import { ShoppingBagButton } from "@/components/shopping-bag"
 
 import { Actions } from "./actions"

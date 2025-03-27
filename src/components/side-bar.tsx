@@ -8,6 +8,7 @@ export interface SideBarProps extends ComponentProps<"div"> {
 	isOpen?: boolean
 	title: string
 	children: ReactNode
+	defaultHeader?: boolean
 	onRequestClose: () => unknown
 }
 
@@ -15,6 +16,7 @@ export const SideBar = ({
 	children,
 	isOpen = false,
 	title,
+	defaultHeader = true,
 	onRequestClose,
 	className,
 	...props
@@ -41,19 +43,21 @@ export const SideBar = ({
 					onClick={e => e.stopPropagation()}
 					{...props}
 				>
-					<div className="relative my-10 flex items-center justify-center px-9 sm:justify-between">
-						<h1 className="text-2xl font-extrabold sm:text-4xl">
-							{title}
-						</h1>
-						<X
-							className="size-7 cursor-pointer max-sm:hidden"
-							onClick={onRequestClose}
-						/>
-						<ArrowLeft
-							className="absolute left-9 size-7 cursor-pointer sm:hidden"
-							onClick={onRequestClose}
-						/>
-					</div>
+					{defaultHeader && (
+						<div className="relative my-10 flex items-center justify-center px-9 sm:justify-between">
+							<h1 className="text-2xl font-extrabold sm:text-4xl">
+								{title}
+							</h1>
+							<X
+								className="size-7 cursor-pointer max-sm:hidden"
+								onClick={onRequestClose}
+							/>
+							<ArrowLeft
+								className="absolute left-9 size-7 cursor-pointer sm:hidden"
+								onClick={onRequestClose}
+							/>
+						</div>
+					)}
 					{children}
 				</div>
 			</div>

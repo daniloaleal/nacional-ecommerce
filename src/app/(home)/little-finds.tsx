@@ -13,7 +13,7 @@ export const LittleFinds = () => {
 
 	const categories = [
 		new Array(8).fill({
-			id: "id_123123dev",
+			id: "123dev",
 			image: productModelPhotoImg,
 			name: "Nome do produto",
 			comparisonPrice: 10900,
@@ -25,7 +25,7 @@ export const LittleFinds = () => {
 			sizes: ["PP", "P", "M", "G", "GG"],
 		}),
 		new Array(8).fill({
-			id: "id_123123dev",
+			id: "123dev",
 			image: productModelPhoto2Img,
 			name: "Nome do produto",
 			comparisonPrice: 10900,
@@ -37,7 +37,7 @@ export const LittleFinds = () => {
 			sizes: ["PP", "P", "M", "G", "GG"],
 		}),
 		new Array(8).fill({
-			id: "id_123123dev",
+			id: "123dev",
 			image: productModelPhoto3Img,
 			name: "Nome do produto",
 			comparisonPrice: 10900,

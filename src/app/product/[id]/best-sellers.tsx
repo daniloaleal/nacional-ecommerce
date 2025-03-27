@@ -32,7 +32,7 @@ export const BestSellers = () => {
 				<div className="keen-slider" ref={sliderRef}>
 					{new Array(6)
 						.fill({
-							id: "id_123123dev",
+							id: "123dev",
 							image: productModelPhoto2Img,
 							name: "Nome do produto",
 							comparisonPrice: 10900,

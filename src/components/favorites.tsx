@@ -2,9 +2,10 @@
 
 import { Heart, ShoppingBag, X } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 import { useState } from "react"
 
-import { useFavorites } from "@/hooks/useFavorites"
+import { FavoriteItem, useFavorites } from "@/hooks/useFavorites"
 import { formatPrice } from "@/utils/number"
 
 import { SideBar } from "./side-bar"
@@ -76,9 +77,12 @@ const FavoritesSideBar = ({
 									</h2>
 								</div>
 
-								<div className="flex cursor-pointer items-center justify-center rounded-full border-2 p-2">
+								<Link
+									href={`/product/${item.id}`}
+									className="flex items-center justify-center rounded-full border-2 p-2"
+								>
 									<ShoppingBag className="size-4 sm:size-5" />
-								</div>
+								</Link>
 							</div>
 						</div>
 					))
@@ -106,5 +110,30 @@ export const FavoritesButton = () => {
 				onRequestClose={() => setIsFavoritesOpen(false)}
 			/>
 		</>
+	)
+}
+
+interface FavoriteProductButtonProps {
+	product: FavoriteItem
+}
+
+export const FavoriteProductButton = ({
+	product,
+}: FavoriteProductButtonProps) => {
+	const { isItemFavorited, toggleFavoriteItem } = useFavorites()
+
+	return (
+		<button
+			data-isfavorited={isItemFavorited(product.id)}
+			className="group absolute top-2.5 left-2.5 cursor-pointer rounded-full bg-black p-2.5 opacity-70"
+			onClick={e => {
+				e.stopPropagation()
+				e.preventDefault()
+
+				toggleFavoriteItem(product)
+			}}
+		>
+			<Heart className="text-white group-data-[isfavorited=true]:fill-white" />
+		</button>
 	)
 }

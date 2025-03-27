@@ -14,6 +14,7 @@ interface NewsCardProps {
 	startingAt?: string
 	className: ClassNameValue
 	banner: StaticImageData
+	link: string
 }
 
 interface NewsRowProps {
@@ -26,6 +27,7 @@ const NewsCard = ({
 	category,
 	className,
 	banner,
+	link,
 }: NewsCardProps) => (
 	<div
 		className={twMerge(
@@ -55,7 +57,7 @@ const NewsCard = ({
 				</div>
 			)}
 			<Link
-				href="/"
+				href={link}
 				className="rounded-full border-3 px-11 py-2 text-sm font-medium uppercase lg:text-base"
 			>
 				COMPRAR
@@ -80,11 +82,13 @@ export const News = () => (
 					className="lg:h-[550px] lg:flex-1"
 					title="PERFUMES"
 					banner={perfumesBannerNewsImg}
+					link="/catalog?category=perfumes"
 				/>
 				<NewsCard
 					className="lg:h-[550px] lg:max-w-[452px]"
 					title="CALÇADOS"
 					banner={calcadosBannerNewsImg}
+					link="/catalog?category=calcados"
 				/>
 			</NewsRow>
 			<NewsRow>
@@ -93,18 +97,20 @@ export const News = () => (
 					category="FEMININO"
 					title="SEMIJOIAS"
 					banner={semijoiasBannerNewsImg}
+					link="/catalog?category=semijoias"
 				/>
 				<NewsCard
 					className="lg:h-[440px] lg:flex-1"
 					title="ACESSÓRIOS"
 					banner={acessoriosBannerNewsImg}
+					link="/catalog?category=acessorios"
 				/>
 			</NewsRow>
 		</div>
 
 		<div className="flex justify-center">
 			<Link
-				href="/catalog?category=news"
+				href="/catalog?category=novidades"
 				className="rounded-full bg-black px-11 py-4 font-semibold text-white uppercase max-lg:hidden"
 			>
 				VER TUDO EM NOVIDADES
