@@ -13,13 +13,13 @@ interface SearchParams {
 }
 
 interface CatalogProps {
-	searchParams?: Promise<SearchParams>
+	searchParams?: { [key: string]: string | string[] | undefined }
 }
 
 export async function generateMetadata({
 	searchParams,
 }: {
-	searchParams: SearchParams
+	searchParams: { [key: string]: string | string[] | undefined }
 }) {
 	const title = `${(await searchParams).search || ""} | Nacional Online`
 
