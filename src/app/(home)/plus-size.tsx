@@ -1,28 +1,16 @@
-"use client"
-
-import { useKeenSlider } from "keen-slider/react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
 import plusSizeBannerImg from "@/assets/plus-size-banner.png"
-// import { ProductCard } from "@/components/product-card"
+import { getProductsFromCollection } from "@/services/shopify"
 
-export const PlusSize = () => {
-	const [sliderRef, instanceRef] = useKeenSlider({
-		slides: {
-			perView: 4,
-			spacing: 26,
-		},
-		breakpoints: {
-			"(max-width: 1024px)": {
-				slides: {
-					perView: 4,
-					spacing: 15,
-				},
-			},
-		},
-	})
+import { PlusSizeSlider } from "./plus-size-slider"
+
+export const PlusSize = async () => {
+	const products = await getProductsFromCollection(
+		"496502964544",
+		"first: 10"
+	)
 
 	return (
 		<section className="mx-auto mt-20 w-full max-w-[1289px] px-5">
@@ -50,25 +38,7 @@ export const PlusSize = () => {
 					</Link>
 				</div>
 			</div>
-			<div className="sm-plus:block relative hidden px-3">
-				<div className="keen-slider mt-6" ref={sliderRef}>
-					{/* products */}
-				</div>
-
-				<button
-					onClick={() => instanceRef.current?.prev()}
-					className="absolute top-1/2 -left-5 -translate-y-1/2 cursor-pointer"
-				>
-					<ChevronLeft className="size-10 text-gray-500" />
-				</button>
-
-				<button
-					onClick={() => instanceRef.current?.next()}
-					className="absolute top-1/2 -right-5 -translate-y-1/2 cursor-pointer"
-				>
-					<ChevronRight className="size-10 text-gray-500" />
-				</button>
-			</div>
+			<PlusSizeSlider products={products} />
 		</section>
 	)
 }

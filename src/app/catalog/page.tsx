@@ -13,7 +13,7 @@ interface SearchParams {
 }
 
 interface CatalogProps {
-	searchParams: SearchParams
+	searchParams?: Promise<SearchParams>
 }
 
 export async function generateMetadata({

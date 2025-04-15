@@ -5,7 +5,7 @@ import { Benefits } from "./benefits"
 // import { LittleFinds } from "./little-finds"
 import { NavigationCategory } from "./navigation-category"
 import { News } from "./news"
-// import { PlusSize } from "./plus-size"
+import { PlusSize } from "./plus-size"
 import { SupperOffers } from "./super-offers"
 
 export const revalidate = 60
@@ -20,7 +20,7 @@ export default function Home() {
 			<SupperOffers />
 			<News />
 			{/* <LittleFinds /> */}
-			{/* <PlusSize /> */}
+			<PlusSize />
 		</>
 	)
 }
