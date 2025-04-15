@@ -6,8 +6,7 @@ import Image from "next/image"
 import Link from "next/link"
 
 import plusSizeBannerImg from "@/assets/plus-size-banner.png"
-import productModelPhoto2Img from "@/assets/productModelPhoto2.png"
-import { ProductCard } from "@/components/product-card"
+// import { ProductCard } from "@/components/product-card"
 
 export const PlusSize = () => {
 	const [sliderRef, instanceRef] = useKeenSlider({
@@ -53,96 +52,7 @@ export const PlusSize = () => {
 			</div>
 			<div className="sm-plus:block relative hidden px-3">
 				<div className="keen-slider mt-6" ref={sliderRef}>
-					<ProductCard
-						className="keen-slider__slide"
-						product={{
-							id: "123dev",
-							image: productModelPhoto2Img,
-							name: "Nome do produto",
-							comparisonPrice: 10900,
-							price: 7999,
-							installment: {
-								price: 799,
-								payments: 10,
-							},
-							sizes: ["PP", "P", "M", "G", "GG"],
-						}}
-					/>
-					<ProductCard
-						className="keen-slider__slide"
-						product={{
-							id: "123dev",
-							image: productModelPhoto2Img,
-							name: "Nome do produto",
-							comparisonPrice: 10900,
-							price: 7999,
-							installment: {
-								price: 799,
-								payments: 10,
-							},
-							sizes: ["PP", "P", "M", "G", "GG"],
-						}}
-					/>
-					<ProductCard
-						className="keen-slider__slide"
-						product={{
-							id: "123dev",
-							image: productModelPhoto2Img,
-							name: "Nome do produto",
-							comparisonPrice: 10900,
-							price: 7999,
-							installment: {
-								price: 799,
-								payments: 10,
-							},
-							sizes: ["PP", "P", "M", "G", "GG"],
-						}}
-					/>
-					<ProductCard
-						className="keen-slider__slide"
-						product={{
-							id: "123dev",
-							image: productModelPhoto2Img,
-							name: "Nome do produto",
-							comparisonPrice: 10900,
-							price: 7999,
-							installment: {
-								price: 799,
-								payments: 10,
-							},
-							sizes: ["PP", "P", "M", "G", "GG"],
-						}}
-					/>
-					<ProductCard
-						className="keen-slider__slide"
-						product={{
-							id: "123dev",
-							image: productModelPhoto2Img,
-							name: "Nome do produto",
-							comparisonPrice: 10900,
-							price: 7999,
-							installment: {
-								price: 799,
-								payments: 10,
-							},
-							sizes: ["PP", "P", "M", "G", "GG"],
-						}}
-					/>
-					<ProductCard
-						className="keen-slider__slide"
-						product={{
-							id: "123dev",
-							image: productModelPhoto2Img,
-							name: "Nome do produto",
-							comparisonPrice: 10900,
-							price: 7999,
-							installment: {
-								price: 799,
-								payments: 10,
-							},
-							sizes: ["PP", "P", "M", "G", "GG"],
-						}}
-					/>
+					{/* products */}
 				</div>
 
 				<button
