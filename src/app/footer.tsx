@@ -1,12 +1,6 @@
-import {
-	ChevronRight,
-	Container,
-	Mailbox,
-	MessageSquareShare,
-} from "lucide-react"
-import Link from "next/link"
+import { ChevronRight, MessageSquareShare } from "lucide-react"
 import { ComponentProps } from "react"
-import { FaFacebook, FaInstagram } from "react-icons/fa"
+import { FaInstagram } from "react-icons/fa"
 import { SiWhatsapp } from "react-icons/si"
 
 interface DetailsProps extends ComponentProps<"details"> {

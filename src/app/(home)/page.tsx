@@ -8,6 +8,8 @@ import { News } from "./news"
 import { PlusSize } from "./plus-size"
 import { SupperOffers } from "./super-offers"
 
+export const revalidate = 60
+
 export default function Home() {
 	return (
 		<>
@@ -17,8 +19,8 @@ export default function Home() {
 			<NavigationCategory />
 			<SupperOffers />
 			<News />
-			<LittleFinds />
-			<PlusSize />
+			{/* <LittleFinds /> */}
+			{/* <PlusSize /> */}
 		</>
 	)
 }

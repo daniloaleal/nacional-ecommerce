@@ -82,13 +82,13 @@ export const News = () => (
 					className="lg:h-[550px] lg:flex-1"
 					title="PERFUMES"
 					banner={perfumesBannerNewsImg}
-					link="/catalog?category=perfumes"
+					link="/catalog?category=496846897472"
 				/>
 				<NewsCard
 					className="lg:h-[550px] lg:max-w-[452px]"
 					title="CALÇADOS"
 					banner={calcadosBannerNewsImg}
-					link="/catalog?category=calcados"
+					link="/catalog?category=496846995776"
 				/>
 			</NewsRow>
 			<NewsRow>
@@ -97,13 +97,13 @@ export const News = () => (
 					category="FEMININO"
 					title="SEMIJOIAS"
 					banner={semijoiasBannerNewsImg}
-					link="/catalog?category=semijoias"
+					link="/catalog?category=496847028544"
 				/>
 				<NewsCard
 					className="lg:h-[440px] lg:flex-1"
 					title="ACESSÓRIOS"
 					banner={acessoriosBannerNewsImg}
-					link="/catalog?category=acessorios"
+					link="/catalog?category=496847061312"
 				/>
 			</NewsRow>
 		</div>

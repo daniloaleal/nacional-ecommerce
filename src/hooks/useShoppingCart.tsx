@@ -10,8 +10,8 @@ import {
 } from "react"
 
 interface CartItem {
-	id: string
-	name: string
+	id: number
+	title: string
 	price: number
 	quantity: number
 	image: string | StaticImageData
@@ -23,12 +23,12 @@ interface CartItem {
 interface ShoppingCartContextType {
 	cart: CartItem[]
 	addToCart: (item: CartItem) => void
-	removeFromCart: (id: string) => void
-	increaseQuantity: (id: string) => void
-	decreaseQuantity: (id: string) => void
+	removeFromCart: (id: number) => void
+	increaseQuantity: (id: number) => void
+	decreaseQuantity: (id: number) => void
 	getTotalItems: () => number
 	getTotalItemsPrice: () => number
-	isInShoppingCart: (id: string) => boolean
+	isInShoppingCart: (id: number) => boolean
 }
 
 interface ShoppingCartProviderProps {
@@ -76,10 +76,10 @@ export const ShoppingCartProvider = ({
 			return [...prevCart, item]
 		})
 
-	const removeFromCart = (id: string) =>
+	const removeFromCart = (id: number) =>
 		setCart(prevCart => prevCart.filter(item => item.id !== id))
 
-	const increaseQuantity = (id: string) =>
+	const increaseQuantity = (id: number) =>
 		setCart(prevCart => {
 			return prevCart.map(cartItem =>
 				cartItem.id === id && cartItem.quantity < cartItem.stock
@@ -91,7 +91,7 @@ export const ShoppingCartProvider = ({
 			)
 		})
 
-	const decreaseQuantity = (id: string) =>
+	const decreaseQuantity = (id: number) =>
 		setCart(prevCart => {
 			return prevCart.map(cartItem =>
 				cartItem.id === id && cartItem.quantity > 1
@@ -106,7 +106,7 @@ export const ShoppingCartProvider = ({
 	const getTotalItemsPrice = () =>
 		cart.reduce((acc, item) => item.price * item.quantity + acc, 0)
 
-	const isInShoppingCart = (id: string) =>
+	const isInShoppingCart = (id: number) =>
 		!!cart.find(cartItem => cartItem.id === id)
 
 	return (

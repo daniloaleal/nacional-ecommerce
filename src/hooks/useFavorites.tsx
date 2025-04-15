@@ -1,6 +1,5 @@
 "use client"
 
-import { StaticImageData } from "next/image"
 import {
 	createContext,
 	ReactNode,
@@ -9,75 +8,65 @@ import {
 	useState,
 } from "react"
 
-export interface FavoriteItem {
-	id: string
-	name: string
-	price: number
-	image: string | StaticImageData
-}
-
-interface FavoritesContextType {
-	favorites: FavoriteItem[]
-	addToFavorites: (item: FavoriteItem) => void
-	removeFromFavorites: (id: string) => void
-	toggleFavoriteItem: (item: FavoriteItem) => void
-	isItemFavorited: (id: string) => boolean
+interface FavoritesContextData {
+	favoriteItemIds: string[]
+	addFavorite: (itemId: string) => void
+	removeFavorite: (itemId: string) => void
+	toggleFavorite: (itemId: string) => void
+	isFavorite: (itemId: string) => boolean
 }
 
 interface FavoritesProviderProps {
 	children: ReactNode
 }
 
-const FavoritesContext = createContext<FavoritesContextType>(
-	{} as FavoritesContextType
+const FavoritesContext = createContext<FavoritesContextData>(
+	{} as FavoritesContextData
 )
 
 export const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
-	const [favorites, setFavorites] = useState<FavoriteItem[]>(() => [])
+	const [favoriteItemIds, setFavoriteItemIds] = useState<string[]>([])
 
 	useEffect(() => {
-		const favorites = localStorage.getItem("favorites")
-
-		setFavorites(favorites ? JSON.parse(favorites) : [])
+		const storedFavorites = localStorage.getItem("favoriteItemIds")
+		if (storedFavorites) {
+			setFavoriteItemIds(JSON.parse(storedFavorites))
+		}
 	}, [])
 
 	useEffect(() => {
-		localStorage.setItem("favorites", JSON.stringify(favorites))
-	}, [favorites])
+		localStorage.setItem("favoriteItemIds", JSON.stringify(favoriteItemIds))
+	}, [favoriteItemIds])
 
-	const isItemFavorited = (id: string) =>
-		!!favorites.find(favoriteItem => favoriteItem.id === id)
+	const isFavorite = (itemId: string) => favoriteItemIds.includes(itemId)
 
-	const addToFavorites = (item: FavoriteItem) =>
-		setFavorites(prevFavorites => {
-			const isExistingItem = prevFavorites.find(
-				favoriteItem => favoriteItem.id === item.id
-			)
-
-			return !isExistingItem ? [...prevFavorites, item] : prevFavorites
+	const addFavorite = (itemId: string) => {
+		setFavoriteItemIds(prevIds => {
+			if (prevIds.includes(itemId)) return prevIds
+			return [...prevIds, itemId]
 		})
+	}
 
-	const removeFromFavorites = (id: string) =>
-		setFavorites(prevFavorites =>
-			prevFavorites.filter(item => item.id !== id)
-		)
+	const removeFavorite = (itemId: string) => {
+		setFavoriteItemIds(prevIds => prevIds.filter(id => id !== itemId))
+	}
 
-	const toggleFavoriteItem = (item: FavoriteItem) => {
-		if (isItemFavorited(item.id)) {
-			removeFromFavorites(item.id)
+	const toggleFavorite = (itemId: string) => {
+		if (isFavorite(itemId)) {
+			removeFavorite(itemId)
 		} else {
-			addToFavorites(item)
+			addFavorite(itemId)
 		}
 	}
 
 	return (
 		<FavoritesContext.Provider
 			value={{
-				favorites,
-				addToFavorites,
-				removeFromFavorites,
-				toggleFavoriteItem,
-				isItemFavorited,
+				favoriteItemIds,
+				addFavorite,
+				removeFavorite,
+				toggleFavorite,
+				isFavorite,
 			}}
 		>
 			{children}
@@ -88,10 +77,9 @@ export const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
 export const useFavorites = () => {
 	const context = useContext(FavoritesContext)
 
-	if (!context)
-		throw new Error(
-			"useFavorites deve estar dentro de um FavoritesProvider"
-		)
+	if (!context) {
+		throw new Error("useFavorites must be used within a FavoritesProvider")
+	}
 
 	return context
 }

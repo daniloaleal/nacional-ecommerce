@@ -10,16 +10,16 @@ import nacionalBlackImg from "@/assets/nacionalBlack.png"
 
 import { FavoritesButton } from "../favorites"
 import { SearchInputField, SearchInputRoot } from "../search-input"
-import { ShoppingBagButton } from "../shopping-bag"
+// import { ShoppingBagButton } from "../shopping-bag"
 import { HeaderSideBarButton } from "./header-side-bar-button"
 
 interface HeaderProps extends ComponentProps<"header"> {
-	searchText?: string
+	search?: string
 	alwaysBackgroundWhite?: boolean
 }
 
 export const Header = ({
-	searchText = "",
+	search = "",
 	alwaysBackgroundWhite = false,
 	className,
 	...props
@@ -77,12 +77,12 @@ export const Header = ({
 
 				<div className="flex items-center gap-4">
 					<SearchInputRoot className="max-w-44 rounded-full border-2 border-inherit px-4 py-1.5 md:border-none md:p-0">
-						<SearchInputField defaultValue={searchText} />
+						<SearchInputField value={search} />
 					</SearchInputRoot>
 
 					<div className="flex items-center gap-4">
 						<FavoritesButton />
-						<ShoppingBagButton />
+						{/* <ShoppingBagButton /> */}
 						<HeaderSideBarButton />
 					</div>
 				</div>

@@ -1,61 +1,12 @@
 import { ChevronRight, Zap } from "lucide-react"
 import Link from "next/link"
 
-import productModelPhotoImg from "@/assets/productModelPhoto.png"
 import { Counter } from "@/components/counter"
 import { ProductCard } from "@/components/product-card"
+import { getProductsFromCollection } from "@/services/shopify"
 
 export const SupperOffers = async () => {
-	const products = [
-		{
-			id: "123dev",
-			image: productModelPhotoImg,
-			name: "Nome do produtoNome do produtoNome do produto",
-			comparisonPrice: 10900,
-			price: 7999,
-			installment: {
-				price: 799,
-				payments: 10,
-			},
-			sizes: ["PP", "P", "M", "G", "GG"],
-		},
-		{
-			id: "123dev",
-			image: productModelPhotoImg,
-			name: "Nome do produto",
-			comparisonPrice: 10900,
-			price: 7999,
-			installment: {
-				price: 799,
-				payments: 10,
-			},
-			sizes: ["PP", "P", "M", "G", "GG"],
-		},
-		{
-			id: "123dev",
-			image: productModelPhotoImg,
-			name: "Nome do produto",
-			comparisonPrice: 10900,
-			price: 7999,
-			installment: {
-				price: 799,
-				payments: 10,
-			},
-			sizes: ["PP", "P", "M", "G", "GG"],
-		},
-		{
-			id: "123dev",
-			image: productModelPhotoImg,
-			name: "Nome do produto",
-			comparisonPrice: 10900,
-			price: 7999,
-			installment: {
-				price: 799,
-				payments: 10,
-			},
-			sizes: ["PP", "P", "M", "G", "GG"],
-		},
-	]
+	const products = await getProductsFromCollection("496502866240", "first: 4")
 
 	return (
 		<section className="mx-auto mt-11 w-full max-w-[1289px] space-y-4 px-5">
@@ -75,9 +26,13 @@ export const SupperOffers = async () => {
 				</Link>
 			</div>
 			<div className="mx-auto grid grid-cols-2 gap-6 max-lg:max-w-[600px] max-sm:max-w-[400px] lg:grid-cols-4">
-				{products.map((product, index) => (
-					<ProductCard key={index} product={product} />
-				))}
+				{products.length > 0 ? (
+					products.map((product, index) => (
+						<ProductCard key={index} product={product} />
+					))
+				) : (
+					<p>Não há produtos em oferta.</p>
+				)}
 			</div>
 		</section>
 	)

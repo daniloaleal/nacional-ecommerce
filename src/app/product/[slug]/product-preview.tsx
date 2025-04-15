@@ -4,12 +4,11 @@ import { useKeenSlider } from "keen-slider/react"
 import Image from "next/image"
 import { useState } from "react"
 
-import productPreview1 from "@/assets/product-preview-1.png"
-import productPreview2 from "@/assets/product-preview-2.png"
-import productPreview3 from "@/assets/product-preview-3.png"
-import productPreview4 from "@/assets/product-preview-4.png"
+interface ProductPreviewProps {
+	images: string[]
+}
 
-export const ProductPreview = () => {
+export const ProductPreview = ({ images }: ProductPreviewProps) => {
 	const [currentSlide, setCurrentSlide] = useState(0)
 	const [isSliderReady, setIsSliderReady] = useState(false)
 	const [sliderRef, instanceRef] = useKeenSlider({
@@ -36,21 +35,27 @@ export const ProductPreview = () => {
 					<div className="h-[248px] w-[243px] bg-[#D9D9D9]">
 						<Image
 							className="h-full w-full object-cover"
-							src={productPreview2}
+							src={images[1]}
+							width={243}
+							height={248}
 							alt="product preview"
 						/>
 					</div>
 					<div className="h-[248px] w-[243px] bg-[#D9D9D9]">
 						<Image
 							className="h-full w-full object-cover"
-							src={productPreview3}
+							src={images[2]}
+							width={243}
+							height={248}
 							alt="product preview"
 						/>
 					</div>
 					<div className="h-[248px] w-[243px] bg-[#D9D9D9]">
 						<Image
 							className="h-full w-full object-cover"
-							src={productPreview4}
+							src={images[3]}
+							width={243}
+							height={248}
 							alt="product preview"
 						/>
 					</div>
@@ -58,7 +63,9 @@ export const ProductPreview = () => {
 				<div className="h-[768px] w-[576px] bg-[#D9D9D9]">
 					<Image
 						className="h-full w-full object-cover"
-						src={productPreview1}
+						src={images[0]}
+						width={578}
+						height={578}
 						alt="product preview"
 					/>
 				</div>
@@ -68,22 +75,30 @@ export const ProductPreview = () => {
 				<div className="keen-slider h-full" ref={sliderRef}>
 					<Image
 						className="keen-slider__slide mx-auto h-full sm:w-auto sm:object-contain"
-						src={productPreview1}
+						src={images[0]}
+						width={243}
+						height={248}
 						alt="product preview"
 					/>
 					<Image
 						className="keen-slider__slide mx-auto h-full sm:w-auto sm:object-contain"
-						src={productPreview2}
+						src={images[1]}
+						width={243}
+						height={248}
 						alt="product preview"
 					/>
 					<Image
 						className="keen-slider__slide mx-auto h-full sm:w-auto sm:object-contain"
-						src={productPreview3}
+						src={images[2]}
+						width={243}
+						height={248}
 						alt="product preview"
 					/>
 					<Image
 						className="keen-slider__slide mx-auto h-full sm:w-auto sm:object-contain"
-						src={productPreview4}
+						src={images[3]}
+						width={243}
+						height={248}
 						alt="product preview"
 					/>
 				</div>
