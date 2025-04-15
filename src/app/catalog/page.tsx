@@ -4,22 +4,14 @@ import { getProducts } from "@/services/shopify"
 import { CatalogHeader } from "./catalog-header"
 import { TopSection } from "./top-section"
 
-interface SearchParams {
-	search?: string
-	sizes?: string
-	minPrice?: string
-	maxPrice?: string
-	categories?: string
-}
-
 interface CatalogProps {
-	searchParams: SearchParams
+	searchParams?: { [key: string]: string | string[] | undefined }
 }
 
 export async function generateMetadata({
 	searchParams,
 }: {
-	searchParams: SearchParams
+	searchParams: { [key: string]: string | string[] | undefined }
 }) {
 	const title = `${(await searchParams).search || ""} | Nacional Online`
 
