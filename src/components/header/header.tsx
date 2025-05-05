@@ -1,5 +1,6 @@
 "use client"
 
+import { Heart } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { ComponentProps, useEffect, useState } from "react"
@@ -7,8 +8,8 @@ import { twMerge } from "tailwind-merge"
 
 import nacionalImg from "@/assets/nacional.svg"
 import nacionalBlackImg from "@/assets/nacionalBlack.png"
+import { useFavorites } from "@/hooks/useFavorites"
 
-import { FavoritesButton } from "../favorites"
 import { SearchInputField, SearchInputRoot } from "../search-input"
 // import { ShoppingBagButton } from "../shopping-bag"
 import { HeaderSideBarButton } from "./header-side-bar-button"
@@ -24,6 +25,8 @@ export const Header = ({
 	className,
 	...props
 }: HeaderProps) => {
+	const { toggleFavoritesSidebar } = useFavorites()
+
 	const [isWhiteBackground, setIsWhiteBackground] = useState(
 		alwaysBackgroundWhite
 	)
@@ -81,7 +84,10 @@ export const Header = ({
 					</SearchInputRoot>
 
 					<div className="flex items-center gap-4">
-						<FavoritesButton />
+						<Heart
+							onClick={toggleFavoritesSidebar}
+							className="hidden cursor-pointer lg:block"
+						/>
 						{/* <ShoppingBagButton /> */}
 						<HeaderSideBarButton />
 					</div>

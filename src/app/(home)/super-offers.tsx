@@ -3,10 +3,13 @@ import Link from "next/link"
 
 import { Counter } from "@/components/counter"
 import { ProductCard } from "@/components/product-card"
-import { getProductsFromCollection } from "@/services/shopify"
+import { getProductsFromCollections } from "@/services/shopify"
 
 export const SupperOffers = async () => {
-	const products = await getProductsFromCollection("496502866240", "first: 4")
+	const products = await getProductsFromCollections(
+		["496502866240"],
+		"first: 4"
+	)
 
 	return (
 		<section className="mx-auto mt-11 w-full max-w-[1289px] space-y-4 px-5">

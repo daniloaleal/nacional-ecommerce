@@ -187,61 +187,75 @@ export const getProductsByIds = async (
 	return products.map(formatShopifyProduct)
 }
 
-export const getProductsFromCollection = async (
-	collectionId: string,
+export const getProductsFromCollections = async (
+	collections: string[],
 	filters: string
 ): Promise<FormattedProduct[]> => {
 	const query = `
-    query {
-      collection(id: "gid://shopify/Collection/${collectionId}") {
-        products(${filters}) {
-          edges {
-            node {
-              id
-              title
-              descriptionHtml
-              handle
-              options {
-                name
-                values
-              }
-              images(first: 4) {
-                edges {
-                  node {
-                    originalSrc
-                  }
-                }
-              }
-              variants(first: 1) {
-                edges {
-                  node {
-                    price
-                    compareAtPrice
-                  }
-                }
-              }
-			  metafields(first: 2) {
-				edges {
-			      node {
-				  namespace
-				  key
-				  value
+	query {
+	  ${collections
+			.map(
+				(collectionId, index) => `
+		collection${index}: collection(id: "gid://shopify/Collection/${collectionId}") {
+		  products(${filters}) {
+			edges {
+			  node {
+				id
+				title
+				descriptionHtml
+				handle
+				options {
+				  name
+				  values
+				}
+				images(first: 4) {
+				  edges {
+					node {
+					  originalSrc
+					}
+				  }
+				}
+				variants(first: 1) {
+				  edges {
+					node {
+					  price
+					  compareAtPrice
+					}
+				  }
+				}
+				metafields(first: 2) {
+				  edges {
+					node {
+					  namespace
+					  key
+					  value
+					}
+				  }
 				}
 			  }
+			}
 		  }
-            }
-          }
-        }
-      }
-    }
+		}
+	  `
+			)
+			.join("\n")}
+	}
   `
 
 	const response = await pushToShopifyAdmin({ query })
-	const edges = response.data.collection?.products?.edges ?? []
+	const allProducts: ProductEdgeNode[] = []
 
-	return edges.map(({ node }: { node: ProductEdgeNode }) =>
-		formatShopifyProduct(node)
-	)
+	collections.forEach((_, index) => {
+		const collectionKey = `collection${index}`
+		const productEdges =
+			response.data?.[collectionKey]?.products?.edges ?? []
+
+		productEdges.forEach(({ node }: { node: ProductEdgeNode }) => {
+			allProducts.push(node)
+		})
+	})
+
+	return allProducts.map(formatShopifyProduct)
 }
 
 interface GetProducts {

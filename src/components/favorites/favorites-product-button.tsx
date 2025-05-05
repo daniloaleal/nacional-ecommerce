@@ -1,29 +1,8 @@
 "use client"
 
 import { Heart } from "lucide-react"
-import { useState } from "react"
 
 import { useFavorites } from "@/hooks/useFavorites"
-
-import { FavoritesSideBar } from "./favorites-side-bar"
-
-export const FavoritesButton = () => {
-	const [isFavoritesOpen, setIsFavoritesOpen] = useState(false)
-
-	return (
-		<>
-			<Heart
-				onClick={() => setIsFavoritesOpen(true)}
-				className="hidden cursor-pointer lg:block"
-			/>
-
-			<FavoritesSideBar
-				isOpen={isFavoritesOpen}
-				onRequestClose={() => setIsFavoritesOpen(false)}
-			/>
-		</>
-	)
-}
 
 interface FavoriteProductButtonProps {
 	productId: string

@@ -1,10 +1,10 @@
-import { getProductsFromCollection } from "@/services/shopify"
+import { getProductsFromCollections } from "@/services/shopify"
 
 import { BestSellersSlider } from "./best-sellers-slider"
 
 export const BestSellers = async () => {
-	const products = await getProductsFromCollection(
-		"496639967552",
+	const products = await getProductsFromCollections(
+		["496639967552"],
 		"first: 10"
 	)
 

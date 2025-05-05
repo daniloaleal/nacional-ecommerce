@@ -8,12 +8,15 @@ import {
 	useState,
 } from "react"
 
+import { FavoritesSidebar } from "@/components/favorites"
+
 interface FavoritesContextData {
 	favoriteItemIds: string[]
 	addFavorite: (itemId: string) => void
 	removeFavorite: (itemId: string) => void
 	toggleFavorite: (itemId: string) => void
 	isFavorite: (itemId: string) => boolean
+	toggleFavoritesSidebar: () => void
 }
 
 interface FavoritesProviderProps {
@@ -26,6 +29,7 @@ const FavoritesContext = createContext<FavoritesContextData>(
 
 export const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
 	const [favoriteItemIds, setFavoriteItemIds] = useState<string[]>([])
+	const [isFavoritesSidebarOpen, setIsFavoritesSidebarOpen] = useState(false)
 
 	useEffect(() => {
 		const storedFavorites = localStorage.getItem("favoriteItemIds")
@@ -59,6 +63,9 @@ export const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
 		}
 	}
 
+	const toggleFavoritesSidebar = () =>
+		setIsFavoritesSidebarOpen(isOpen => !isOpen)
+
 	return (
 		<FavoritesContext.Provider
 			value={{
@@ -67,9 +74,15 @@ export const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
 				removeFavorite,
 				toggleFavorite,
 				isFavorite,
+				toggleFavoritesSidebar,
 			}}
 		>
 			{children}
+
+			<FavoritesSidebar
+				isOpen={isFavoritesSidebarOpen}
+				onRequestClose={toggleFavoritesSidebar}
+			/>
 		</FavoritesContext.Provider>
 	)
 }

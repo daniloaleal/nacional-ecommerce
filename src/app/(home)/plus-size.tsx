@@ -2,13 +2,13 @@ import Image from "next/image"
 import Link from "next/link"
 
 import plusSizeBannerImg from "@/assets/plus-size-banner.png"
-import { getProductsFromCollection } from "@/services/shopify"
+import { getProductsFromCollections } from "@/services/shopify"
 
 import { PlusSizeSlider } from "./plus-size-slider"
 
 export const PlusSize = async () => {
-	const products = await getProductsFromCollection(
-		"496502964544",
+	const products = await getProductsFromCollections(
+		["496502964544"],
 		"first: 10"
 	)
 

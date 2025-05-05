@@ -1,5 +1,9 @@
 import { ProductCard } from "@/components/product-card"
-import { getProducts } from "@/services/shopify"
+import {
+	FormattedProduct,
+	getProducts,
+	getProductsFromCollections,
+} from "@/services/shopify"
 
 import { CatalogHeader } from "./catalog-header"
 import { TopSection } from "./top-section"
@@ -9,17 +13,17 @@ interface SearchParams {
 	sizes?: string
 	minPrice?: string
 	maxPrice?: string
-	categories?: string
+	category?: string
 }
 
 interface CatalogProps {
-	searchParams?: { [key: string]: string | string[] | undefined }
+	searchParams?: Promise<SearchParams>
 }
 
 export async function generateMetadata({
 	searchParams,
 }: {
-	searchParams: { [key: string]: string | string[] | undefined }
+	searchParams: SearchParams
 }) {
 	const title = `${(await searchParams).search || ""} | Nacional Online`
 
@@ -33,21 +37,62 @@ export default async function Catalog({ searchParams }: CatalogProps) {
 	const sizes = (await searchParams)?.sizes || ""
 	const minPrice = (await searchParams)?.minPrice || ""
 	const maxPrice = (await searchParams)?.maxPrice || ""
-	const categories = (await searchParams)?.categories || ""
+	const categories = (await searchParams)?.category || ""
 
 	const filters = [
 		search ? `title:*${search}*` : "",
-		sizes.length > 0 ? `option:${sizes}` : "",
+		sizes ? `option:${sizes}` : "",
 		minPrice ? `price:>=${minPrice}` : "",
 		maxPrice ? `price:<=${maxPrice}` : "",
-		categories.length > 0 ? `collectionId:${categories}` : "",
 	]
 		.filter(Boolean)
 		.join(" AND ")
 
-	const products = await getProducts({
-		filters: `first: 10, query: "${filters}"`,
-	})
+	let products: FormattedProduct[]
+
+	try {
+		if (categories) {
+			const categoryList = categories.split(",")
+			const productsFromCollection = await getProductsFromCollections(
+				categoryList,
+				`first: 10`
+			)
+
+			const minP = minPrice ? parseFloat(minPrice) : undefined
+			const maxP = maxPrice ? parseFloat(maxPrice) : undefined
+
+			const matchText = (value: string, term: string) =>
+				value.toLowerCase().includes(term.toLowerCase())
+
+			products = productsFromCollection.filter(product => {
+				// search em título OU descrição
+				if (search) {
+					const inTitle = matchText(product.title, search)
+					const inDesc = matchText(product.description, search)
+					if (!inTitle && !inDesc) return false
+				}
+
+				// sizes
+				if (sizes && !product.sizes.includes(sizes)) {
+					return false
+				}
+
+				// price range
+				const priceNum = parseFloat(product.price)
+				if (minP !== undefined && priceNum < minP) return false
+				if (maxP !== undefined && priceNum > maxP) return false
+
+				return true
+			})
+		} else {
+			products = await getProducts({
+				filters: `first: 10, query: "${filters}"`,
+			})
+		}
+	} catch (e) {
+		console.log("Produto não encontrado", e)
+		products = []
+	}
 
 	return (
 		<>

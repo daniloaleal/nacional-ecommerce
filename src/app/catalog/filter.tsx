@@ -190,11 +190,18 @@ const FilterSideBar = ({ isOpen, onRequestClose }: FilterSideBarProps) => {
 				<button
 					className="mb-3 cursor-pointer rounded-full bg-black px-7 py-3 text-white"
 					onClick={() => {
-						const searchParams = new URLSearchParams()
+						const searchParams = new URLSearchParams(
+							window.location.search
+						)
+
+						searchParams.delete("category")
+						searchParams.delete("sizes")
+						searchParams.delete("minPrice")
+						searchParams.delete("maxPrice")
 
 						if (selectedCategories.length > 0)
 							searchParams.set(
-								"categories",
+								"category",
 								selectedCategories.join(",")
 							)
 

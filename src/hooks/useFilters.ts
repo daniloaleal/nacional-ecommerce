@@ -7,7 +7,7 @@ export const useFilters = () => {
 	const searchParams = useSearchParams()
 
 	const [selectedCategories, setSelectedCategories] = useState<string[]>(
-		searchParams.get("categories")?.split(",") || []
+		searchParams.get("category")?.split(",") || []
 	)
 	const [selectedSizes, setSelectedSizes] = useState<string[]>(
 		searchParams.get("sizes")?.split(",") || []

@@ -3,7 +3,7 @@ import { NextRequest } from "next/server"
 import {
 	getProducts,
 	getProductsByIds,
-	getProductsFromCollection,
+	getProductsFromCollections,
 } from "@/services/shopify"
 
 export async function GET(req: NextRequest) {
@@ -15,7 +15,7 @@ export async function GET(req: NextRequest) {
 
 	if (collectionId) {
 		return Response.json({
-			products: await getProductsFromCollection(collectionId, filter),
+			products: await getProductsFromCollections([collectionId], filter),
 		})
 	}
 

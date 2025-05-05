@@ -1,6 +1,8 @@
 import { ChevronRight, Heart, Mailbox, MessageSquareShare } from "lucide-react"
 import Link from "next/link"
 
+import { useFavorites } from "@/hooks/useFavorites"
+
 import { SideBar } from "../side-bar"
 
 interface HeaderSideBarProps {
@@ -12,6 +14,8 @@ export const HeaderSideBar = ({
 	isOpen,
 	onRequestClose,
 }: HeaderSideBarProps) => {
+	const { toggleFavoritesSidebar } = useFavorites()
+
 	const links = [
 		{
 			name: "Novidades e Promoções",
@@ -72,10 +76,13 @@ export const HeaderSideBar = ({
 				</button>
 
 				<div className="space-y-10 text-lg font-bold">
-					<div className="flex gap-2.5">
+					<button
+						className="flex cursor-pointer gap-2.5"
+						onClick={toggleFavoritesSidebar}
+					>
 						<Heart className="size-7" />
 						<span>Ver favoritos</span>
-					</div>
+					</button>
 					<div className="flex gap-2.5">
 						<Mailbox className="size-7" />
 						<span>Acompanhar meu pedido</span>

@@ -9,7 +9,7 @@ interface FavoritesSideBarProps {
 	onRequestClose: () => unknown
 }
 
-export const FavoritesSideBar = ({
+export const FavoritesSidebar = ({
 	onRequestClose,
 	isOpen,
 }: FavoritesSideBarProps) => {
