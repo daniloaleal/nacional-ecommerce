@@ -8,7 +8,7 @@ import { News } from "./news"
 import { PlusSize } from "./plus-size"
 import { SupperOffers } from "./super-offers"
 
-export const revalidate = 60 * 60
+export const revalidate = 3600
 
 export default function Home() {
 	return (

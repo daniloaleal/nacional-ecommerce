@@ -8,22 +8,14 @@ import {
 import { CatalogHeader } from "./catalog-header"
 import { TopSection } from "./top-section"
 
-interface SearchParams {
-	search?: string
-	sizes?: string
-	minPrice?: string
-	maxPrice?: string
-	category?: string
-}
-
 interface CatalogProps {
-	searchParams?: Promise<SearchParams>
+	searchParams?: { [key: string]: string | string[] | undefined }
 }
 
 export async function generateMetadata({
 	searchParams,
 }: {
-	searchParams: SearchParams
+	searchParams: Promise<{ search?: string }>
 }) {
 	const title = `${(await searchParams).search || ""} | Nacional Online`
 
@@ -33,11 +25,11 @@ export async function generateMetadata({
 }
 
 export default async function Catalog({ searchParams }: CatalogProps) {
-	const search = (await searchParams)?.search || ""
-	const sizes = (await searchParams)?.sizes || ""
-	const minPrice = (await searchParams)?.minPrice || ""
-	const maxPrice = (await searchParams)?.maxPrice || ""
-	const categories = (await searchParams)?.category || ""
+	const search = searchParams?.search || ""
+	const sizes = searchParams?.sizes || ""
+	const minPrice = searchParams?.minPrice || ""
+	const maxPrice = searchParams?.maxPrice || ""
+	const categories = searchParams?.category || ""
 
 	const filters = [
 		search ? `title:*${search}*` : "",
