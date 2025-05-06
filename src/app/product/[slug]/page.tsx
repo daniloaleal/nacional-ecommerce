@@ -12,13 +12,13 @@ import { Price } from "./price"
 import { ProductPreview } from "./product-preview"
 
 interface ProductProps {
-	params: {
-		slug: string
-	}
+	params?: Promise<{
+		slug?: string
+	}>
 }
 
 export default async function Product({ params }: ProductProps) {
-	const { slug } = await params
+	const { slug } = (await params) ?? {}
 
 	const product = (
 		await getProducts({
