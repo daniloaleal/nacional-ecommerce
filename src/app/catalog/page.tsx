@@ -8,11 +8,6 @@ import {
 import { CatalogHeader } from "./catalog-header"
 import { TopSection } from "./top-section"
 
-interface PageProps {
-	params: { [key: string]: string }
-	searchParams?: { [key: string]: string | string[] | undefined }
-  }
-
 // export async function generateMetadata({
 // 	searchParams,
 // }: {
@@ -24,12 +19,24 @@ interface PageProps {
 // 	}
 // }
 
-export default async function Catalog({ searchParams }: PageProps) {
-	const search = (searchParams?.search as string) || ""
-	const sizes = (searchParams?.sizes as string) || ""
-	const minPrice = (searchParams?.minPrice as string) || ""
-	const maxPrice = (searchParams?.maxPrice as string) || ""
-	const categories = (searchParams?.category as string) || ""
+export default async function Catalog({
+	searchParams,
+}: {
+	searchParams?: Promise<{
+		search?: string
+		sizes?: string
+		minPrice?: string
+		maxPrice?: string
+		category?: string
+	}>
+}) {
+	const {
+		search,
+		sizes,
+		minPrice,
+		maxPrice,
+		category: categories,
+	} = (await searchParams) ?? {}
 
 	const filters = [
 		search ? `title:*${search}*` : "",
