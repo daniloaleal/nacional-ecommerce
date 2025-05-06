@@ -15,21 +15,20 @@ interface CatalogProps {
 export async function generateMetadata({
 	searchParams,
 }: {
-	searchParams: Promise<{ search?: string }>
+	searchParams?: { [key: string]: string | string[] | undefined }
 }) {
-	const title = `${(await searchParams).search || ""} | Nacional Online`
-
+	const search = searchParams?.search as string
 	return {
-		title,
+		title: `${search || ""} | Nacional Online`,
 	}
 }
 
 export default async function Catalog({ searchParams }: CatalogProps) {
-	const search = searchParams?.search || ""
-	const sizes = searchParams?.sizes || ""
-	const minPrice = searchParams?.minPrice || ""
-	const maxPrice = searchParams?.maxPrice || ""
-	const categories = searchParams?.category || ""
+	const search = (searchParams?.search as string) || ""
+	const sizes = (searchParams?.sizes as string) || ""
+	const minPrice = (searchParams?.minPrice as string) || ""
+	const maxPrice = (searchParams?.maxPrice as string) || ""
+	const categories = (searchParams?.category as string) || ""
 
 	const filters = [
 		search ? `title:*${search}*` : "",
