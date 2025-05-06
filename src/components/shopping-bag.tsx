@@ -54,7 +54,7 @@ const ShoppingBagSideBar = ({
 							/>
 							<div className="flex-1">
 								<h1 className="text-xs font-medium sm:text-sm">
-									{item.name}
+									{item.title}
 								</h1>
 								<div className="mt-2.5 text-xs text-[#ADADAD]">
 									<p>Cor: {item.color}</p>
