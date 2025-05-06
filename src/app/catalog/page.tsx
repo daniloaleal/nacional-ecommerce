@@ -8,9 +8,10 @@ import {
 import { CatalogHeader } from "./catalog-header"
 import { TopSection } from "./top-section"
 
-interface CatalogProps {
+interface PageProps {
+	params: { [key: string]: string }
 	searchParams?: { [key: string]: string | string[] | undefined }
-}
+  }
 
 // export async function generateMetadata({
 // 	searchParams,
@@ -23,7 +24,7 @@ interface CatalogProps {
 // 	}
 // }
 
-export default async function Catalog({ searchParams }: CatalogProps) {
+export default async function Catalog({ searchParams }: PageProps) {
 	const search = (searchParams?.search as string) || ""
 	const sizes = (searchParams?.sizes as string) || ""
 	const minPrice = (searchParams?.minPrice as string) || ""
