@@ -12,16 +12,16 @@ interface CatalogProps {
 	searchParams?: { [key: string]: string | string[] | undefined }
 }
 
-export async function generateMetadata({
-	searchParams,
-}: {
-	searchParams?: { [key: string]: string | string[] | undefined }
-}) {
-	const search = searchParams?.search as string
-	return {
-		title: `${search || ""} | Nacional Online`,
-	}
-}
+// export async function generateMetadata({
+// 	searchParams,
+// }: {
+// 	searchParams?: { [key: string]: string | string[] | undefined }
+// }) {
+// 	const search = searchParams?.search as string
+// 	return {
+// 		title: `${search || ""} | Nacional Online`,
+// 	}
+// }
 
 export default async function Catalog({ searchParams }: CatalogProps) {
 	const search = (searchParams?.search as string) || ""
