@@ -67,31 +67,31 @@ export const NavigationCategory = () => {
 						name="Feminino"
 						icon={femininoImg}
 						banner={femininoBannerImg}
-						link="/catalog?category=feminino"
+						link="/catalog?category=498671419712"
 					/>
 					<Category
 						name="Masculino"
 						icon={masculinoImg}
 						banner={masculinoBannerImg}
-						link="/catalog?category=masculino"
+						link="/catalog?category=498671452480"
 					/>
 					<Category
 						name="Infantil"
 						icon={infantilImg}
 						banner={infantilBannerImg}
-						link="/catalog?category=infantil"
+						link="/catalog?category=498671485248"
 					/>
 					<Category
 						name="Bebês"
 						icon={infantilImg}
 						banner={infantilBannerImg}
-						link="/catalog?category=infantil"
+						link="/catalog?category=498671518016"
 					/>
 					<Category
 						name="Plus Size"
 						icon={plusSizeImg}
 						banner={plusSizeBannerImg}
-						link="/catalog?category=plussize"
+						link="/catalog?category=496502964544"
 					/>
 				</CategoryRow>
 				<CategoryRow>
@@ -99,25 +99,25 @@ export const NavigationCategory = () => {
 						name="Calçados"
 						icon={calcadosImg}
 						banner={calcadosBannerImg}
-						link="/catalog?category=calcados"
+						link="/catalog?category=496846995776"
 					/>
 					<Category
 						name="Acessórios"
 						icon={acessoriosImg}
 						banner={acessoriosBannerImg}
-						link="/catalog?category=acessorios"
+						link="/catalog?category=496847061312"
 					/>
 					<Category
 						name="Semijoias"
 						icon={semijoiasImg}
 						banner={semijoiasBannerImg}
-						link="/catalog?category=semijoias"
+						link="/catalog?category=496847028544"
 					/>
 					<Category
 						name="Perfumes"
 						icon={perfumesImg}
 						banner={perfumesBannerImg}
-						link="/catalog?category=perfumes"
+						link="/catalog?category=496846897472"
 					/>
 				</CategoryRow>
 			</div>

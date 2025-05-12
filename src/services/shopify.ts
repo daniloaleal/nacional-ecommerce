@@ -123,7 +123,7 @@ const formatShopifyProduct = (product: ProductEdgeNode): FormattedProduct => {
 		colors:
 			product.options?.find(({ name }) => name === "Cor")?.values || [],
 		slug: product.handle,
-		url: `http://localhost:3000/product/${product.handle}`,
+		url: `/product/${product.handle}`,
 		mercadolivreUrl:
 			product.metafields?.edges?.find(
 				({ node: { key } }) => key === "mercadolivre"
