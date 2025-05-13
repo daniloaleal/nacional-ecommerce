@@ -68,20 +68,44 @@ export const Footer = () => {
 		],
 		store: [
 			{
-				text: "Blusas/camisas",
-				href: "/",
-			},
-			{
-				text: "Sapatos",
-				href: "/",
-			},
-			{
-				text: "Vestidos",
-				href: "/",
+				text: "Calçados",
+				href: "/catalog?category=496846995776",
 			},
 			{
 				text: "Política de privacidade",
 				href: "/policy",
+			},
+			{
+				text: "Feminino",
+				href: "/catalog?category=498671419712",
+			},
+			{
+				text: "Masculino",
+				href: "/catalog?category=498671452480",
+			},
+			{
+				text: "Infantil",
+				href: "/catalog?category=498671485248",
+			},
+			{
+				text: "Bebês",
+				href: "/catalog?category=498671518016",
+			},
+			{
+				text: "Plus Size",
+				href: "/catalog?category=496502964544",
+			},
+			{
+				text: "Acessórios",
+				href: "/catalog?category=496847061312",
+			},
+			{
+				text: "Semijoias",
+				href: "/catalog?category=496847028544",
+			},
+			{
+				text: "Perfumes",
+				href: "/catalog?category=496846897472",
 			},
 		],
 	}
@@ -178,7 +202,7 @@ export const Footer = () => {
 							))}
 						</div>
 					</Details> */}
-					<Details title="Loja">
+					{/* <Details title="Loja">
 						<div className="mt-2 ml-2 flex flex-col gap-4 text-gray-600">
 							{links.help.map(({ href, text }, index) => (
 								<a target="_blank" key={index} href={href}>
@@ -186,7 +210,7 @@ export const Footer = () => {
 								</a>
 							))}
 						</div>
-					</Details>
+					</Details> */}
 				</div>
 
 				<div className="mt-11 space-y-3.5 font-semibold text-gray-600">

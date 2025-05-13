@@ -18,44 +18,44 @@ export const HeaderSideBar = ({
 
 	const links = [
 		{
-			name: "Novidades e Promoções",
-			link: "/catalog?category=promocoes",
+			name: "Novidades",
+			link: "/catalog?category=496502899008",
 		},
 		{
 			name: "Feminino",
-			link: "/catalog?category=feminino",
+			link: "/catalog?category=498671419712",
 		},
 		{
 			name: "Masculino",
-			link: "/catalog?category=masculino",
+			link: "/catalog?category=498671452480",
 		},
 		{
 			name: "Crianças",
-			link: "/catalog?category=criancas",
+			link: "/catalog?category=498671485248",
 		},
 		{
 			name: "Bebês",
-			link: "/catalog?category=bebes",
+			link: "/catalog?category=498671518016",
 		},
 		{
 			name: "Plus Size",
-			link: "/catalog?category=plussize",
+			link: "/catalog?category=496502964544",
 		},
 		{
 			name: "Calçados",
-			link: "/catalog?category=calcados",
+			link: "/catalog?category=496846995776",
 		},
 		{
 			name: "Acessórios",
-			link: "/catalog?category=acessorios",
+			link: "/catalog?category=496847061312",
 		},
 		{
 			name: "Semijoias",
-			link: "/catalog?category=semijoias",
+			link: "/catalog?category=496847028544",
 		},
 		{
 			name: "Perfumes",
-			link: "/catalog?category=perfumes",
+			link: "/catalog?category=496846897472",
 		},
 	]
 
