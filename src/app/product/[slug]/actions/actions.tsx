@@ -22,7 +22,7 @@ export const Actions = ({ product }: ActionsProps) => {
 	const { toggleFavorite, isFavorite } = useFavorites()
 	const [marketplaceSelected, setMarketplaceSelected] = useState<
 		"mercadolivre" | "shopee"
-	>("mercadolivre")
+	>(product.mercadolivreUrl ? "mercadolivre" : "shopee")
 	const [selectedColorIndex, setSelectedColorIndex] = useState(0)
 	const [selectedSizeIndex, setSelectedSizeIndex] = useState(0)
 
@@ -80,6 +80,8 @@ export const Actions = ({ product }: ActionsProps) => {
 			/>
 			<MarketplaceSelection
 				marketplaceSelected={marketplaceSelected}
+				isMercadoLivreBlocked={!product.mercadolivreUrl}
+				isShopeeBlocked={!product.shopeeUrl}
 				onMarketplaceSelected={marketplace =>
 					setMarketplaceSelected(marketplace)
 				}

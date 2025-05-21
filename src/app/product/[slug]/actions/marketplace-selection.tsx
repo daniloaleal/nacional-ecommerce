@@ -7,17 +7,24 @@ import shopeeImg from "@/assets/shopee.png"
 interface MarketplaceSelectionProps {
 	marketplaceSelected: string
 	onMarketplaceSelected: (marketplace: "mercadolivre" | "shopee") => void
+	isMercadoLivreBlocked?: boolean
+	isShopeeBlocked?: boolean
 }
 
 export const MarketplaceSelection = ({
 	marketplaceSelected,
 	onMarketplaceSelected,
+	isMercadoLivreBlocked,
+	isShopeeBlocked,
 }: MarketplaceSelectionProps) => (
 	<div className="mt-10 space-y-3.5">
 		<h3 className="text-[#4A4A4A]">Finalizar compra em:</h3>
 
 		<div className="flex items-center gap-1 sm:gap-3.5">
-			<label className="flex items-center gap-3.5">
+			<label
+				data-isblocked={isMercadoLivreBlocked}
+				className="flex items-center gap-3.5 data-[isblocked=true]:pointer-events-none data-[isblocked=true]:opacity-50"
+			>
 				<div
 					data-isselected={marketplaceSelected === "mercadolivre"}
 					className="group flex size-5 cursor-pointer items-center justify-center rounded-full border-[#929292] text-white data-[isselected=false]:border data-[isselected=true]:bg-black lg:size-8"
@@ -30,7 +37,10 @@ export const MarketplaceSelection = ({
 				</div>
 				<span className="text-xs lg:text-base">Mercado Livre</span>
 			</label>
-			<label className="flex items-center gap-3.5">
+			<label
+				data-isblocked={isShopeeBlocked}
+				className="flex items-center gap-3.5 data-[isblocked=true]:pointer-events-none data-[isblocked=true]:opacity-50"
+			>
 				<div
 					data-isselected={marketplaceSelected === "shopee"}
 					className="group flex size-5 cursor-pointer items-center justify-center rounded-full border-[#929292] text-white data-[isselected=false]:border data-[isselected=true]:bg-black lg:size-8"

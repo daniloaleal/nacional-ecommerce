@@ -1,4 +1,4 @@
-import { ChevronRight, Heart, Mailbox, MessageSquareShare } from "lucide-react"
+import { ChevronRight, Heart, MessageSquareShare } from "lucide-react"
 import Link from "next/link"
 
 import { useFavorites } from "@/hooks/useFavorites"
@@ -83,10 +83,10 @@ export const HeaderSideBar = ({
 						<Heart className="size-7" />
 						<span>Ver favoritos</span>
 					</button>
-					<div className="flex gap-2.5">
+					{/* <div className="flex gap-2.5">
 						<Mailbox className="size-7" />
 						<span>Acompanhar meu pedido</span>
-					</div>
+					</div> */}
 					<div className="flex gap-2.5">
 						<MessageSquareShare className="size-7" />
 						<span>Atendimento & Suporte</span>
