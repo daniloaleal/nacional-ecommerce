@@ -55,7 +55,7 @@ export const FullScreenImagesViewer = ({
 			></div>
 
 			<div
-				className="keen-slider relative h-[1000px] w-[800px] overflow-hidden bg-white shadow-lg"
+				className="keen-slider relative h-[700px] w-[800px] overflow-hidden bg-white shadow-lg"
 				ref={sliderRef}
 			>
 				<button
