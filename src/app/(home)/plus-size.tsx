@@ -31,7 +31,7 @@ export const PlusSize = async () => {
 						todas as curvas
 					</p>
 					<Link
-						href="/catalog?category=plussize"
+						href="/catalog?category=496502964544"
 						className="sm-plus:text-base sm-plus:mt-9 sm-plus:px-14 sm-plus:bg-transparent sm-plus:text-white sm-plus:border mt-4 inline-block rounded-full bg-white px-5 py-3 text-sm font-bold text-black"
 					>
 						VER CATÁLOGO

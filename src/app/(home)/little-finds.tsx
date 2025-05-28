@@ -67,7 +67,7 @@ export const LittleFinds = () => {
 				)}
 				<div className="sm-plus:hidden flex min-w-[200px] items-center justify-center">
 					<Link
-						href="/catalog?category=achadinhos"
+						href="/catalog?category=496502931776"
 						className="rounded-full bg-black px-10 py-2.5 text-white"
 					>
 						VER MAIS

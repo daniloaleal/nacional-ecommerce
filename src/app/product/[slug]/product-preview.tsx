@@ -4,6 +4,8 @@ import { useKeenSlider } from "keen-slider/react"
 import Image from "next/image"
 import { useState } from "react"
 
+import { FullScreenImagesViewer } from "@/components/full-screen-photo-viewer"
+
 interface ProductPreviewProps {
 	images: string[]
 }
@@ -11,6 +13,9 @@ interface ProductPreviewProps {
 export const ProductPreview = ({ images }: ProductPreviewProps) => {
 	const [currentSlide, setCurrentSlide] = useState(0)
 	const [isSliderReady, setIsSliderReady] = useState(false)
+	const [isOpenFullScreenImagesViewer, setIsOpenFullScreenImagesViewer] =
+		useState(false)
+	const [imageIndexFocus, setImageIndexFocus] = useState(0)
 	const [sliderRef, instanceRef] = useKeenSlider({
 		slides: {
 			perView: 1,
@@ -28,6 +33,11 @@ export const ProductPreview = ({ images }: ProductPreviewProps) => {
 		},
 	})
 
+	const handleClickImage = (imageIndex: number) => {
+		setImageIndexFocus(imageIndex)
+		setIsOpenFullScreenImagesViewer(true)
+	}
+
 	return (
 		<>
 			<div className="max-xxl:justify-center flex gap-7 px-5 max-lg:hidden">
@@ -40,6 +50,7 @@ export const ProductPreview = ({ images }: ProductPreviewProps) => {
 								width={243}
 								height={248}
 								alt="product preview"
+								onClick={() => handleClickImage(1)}
 							/>
 						</div>
 					)}
@@ -51,6 +62,7 @@ export const ProductPreview = ({ images }: ProductPreviewProps) => {
 								width={243}
 								height={248}
 								alt="product preview"
+								onClick={() => handleClickImage(2)}
 							/>
 						</div>
 					)}
@@ -62,6 +74,7 @@ export const ProductPreview = ({ images }: ProductPreviewProps) => {
 								width={243}
 								height={248}
 								alt="product preview"
+								onClick={() => handleClickImage(3)}
 							/>
 						</div>
 					)}
@@ -73,6 +86,7 @@ export const ProductPreview = ({ images }: ProductPreviewProps) => {
 						width={578}
 						height={578}
 						alt="product preview"
+						onClick={() => handleClickImage(0)}
 					/>
 				</div>
 			</div>
@@ -139,6 +153,13 @@ export const ProductPreview = ({ images }: ProductPreviewProps) => {
 					</div>
 				</div>
 			</div>
+
+			<FullScreenImagesViewer
+				images={images}
+				isOpen={isOpenFullScreenImagesViewer}
+				defaultImageIndex={imageIndexFocus}
+				onClose={() => setIsOpenFullScreenImagesViewer(false)}
+			/>
 		</>
 	)
 }

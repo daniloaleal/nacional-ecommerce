@@ -54,7 +54,7 @@ export default async function Catalog({
 			const categoryList = categories.split(",")
 			const productsFromCollection = await getProductsFromCollections(
 				categoryList,
-				`first: 10`
+				``
 			)
 
 			const minP = minPrice ? parseFloat(minPrice) : undefined
@@ -85,7 +85,7 @@ export default async function Catalog({
 			})
 		} else {
 			products = await getProducts({
-				filters: `first: 10, query: "${filters}"`,
+				filters: `query: "${filters}"`,
 			})
 		}
 	} catch (e) {

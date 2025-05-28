@@ -23,7 +23,7 @@ export const SupperOffers = async () => {
 				</div>
 				<Link
 					className="hidden items-center text-2xl font-semibold text-gray-500 sm:flex"
-					href="/catalog?category=promocoes"
+					href="/catalog?category=496502866240"
 				>
 					Ver mais <ChevronRight />
 				</Link>

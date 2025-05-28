@@ -110,7 +110,7 @@ export const News = () => (
 
 		<div className="flex justify-center">
 			<Link
-				href="/catalog?category=novidades"
+				href="/catalog?category=496502899008"
 				className="rounded-full bg-black px-11 py-4 font-semibold text-white uppercase max-lg:hidden"
 			>
 				VER TUDO EM NOVIDADES
