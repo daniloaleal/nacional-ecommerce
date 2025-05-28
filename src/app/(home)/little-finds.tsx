@@ -13,30 +13,42 @@ export const LittleFinds = () => {
 		{ title: string; products: FormattedProduct[] }[]
 	>([])
 
+	interface ApiResponse {
+		products: FormattedProduct[]
+	}
+
 	useEffect(() => {
 		Promise.all([
-			axios.get("/api/products?collectionId=497058644288&filter=first:8"),
-			axios.get("/api/products?collectionId=497058677056&filter=first:8"),
-			axios.get("/api/products?collectionId=496846995776&filter=first:8"),
-		]).then(products => {
+			axios.get<ApiResponse>(
+				"/api/products?collectionId=497058644288&filter=first:8"
+			),
+			axios.get<ApiResponse>(
+				"/api/products?collectionId=497058677056&filter=first:8"
+			),
+			axios.get<ApiResponse>(
+				"/api/products?collectionId=496846995776&filter=first:8"
+			),
+		]).then(response => {
 			const dresses = {
 				title: "VESTIDOS",
-				products: products[0].data.products,
+				products: response[0].data.products,
 			}
 
 			const blouses = {
 				title: "BLUSAS",
-				products: products[1].data.products,
+				products: response[1].data.products,
 			}
 
 			const shoes = {
 				title: "CALÇADOS",
-				products: products[2].data.products,
+				products: response[2].data.products,
 			}
 
 			setCategories([dresses, blouses, shoes])
 		})
 	}, [])
+
+	console.log(categories)
 
 	return (
 		<section className="sm-plus:px-5 mx-auto mt-20 w-full max-w-[1289px] pl-5">

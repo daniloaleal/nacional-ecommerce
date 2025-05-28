@@ -14,9 +14,10 @@ export async function GET(req: NextRequest) {
 	const filter = searchParams.get("filter") || ""
 
 	if (collectionId) {
-		const products = (
-			await getProductsFromCollections([collectionId], filter)
-		).products
+		const products = await getProductsFromCollections(
+			[collectionId],
+			filter
+		)
 
 		return Response.json({
 			products: products.products,
