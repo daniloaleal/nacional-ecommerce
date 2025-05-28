@@ -24,7 +24,7 @@ export default async function Product({ params }: ProductProps) {
 		await getProducts({
 			filters: `first: 1, query: "handle:${slug}"`,
 		})
-	)[0]
+	).products[0]
 
 	if (!product) {
 		notFound()

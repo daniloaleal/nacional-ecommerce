@@ -14,8 +14,13 @@ export async function GET(req: NextRequest) {
 	const filter = searchParams.get("filter") || ""
 
 	if (collectionId) {
+		const products = (
+			await getProductsFromCollections([collectionId], filter)
+		).products
+
 		return Response.json({
-			products: await getProductsFromCollections([collectionId], filter),
+			products: products.products,
+			pageInfo: products.pageInfos,
 		})
 	}
 
@@ -25,9 +30,12 @@ export async function GET(req: NextRequest) {
 		})
 	}
 
+	const products = await getProducts({
+		filters: filter,
+	})
+
 	return Response.json({
-		products: await getProducts({
-			filters: filter,
-		}),
+		products: products.products,
+		pageInfo: products.pageInfo,
 	})
 }

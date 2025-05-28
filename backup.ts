@@ -52,6 +52,8 @@ export const pushToShopifyAdmin = async ({
 		}
 	)
 
+	console.log("RESPOSTA", response.data)
+
 	return response.data
 }
 
@@ -190,10 +192,7 @@ export const getProductsByIds = async (
 export const getProductsFromCollections = async (
 	collections: string[],
 	filters: string
-): Promise<{
-	products: FormattedProduct[]
-	pageInfos: { hasNextPage: boolean; endCursor: string | null }[]
-}> => {
+): Promise<FormattedProduct[]> => {
 	const query = `
 	query {
 	  ${collections
@@ -201,10 +200,6 @@ export const getProductsFromCollections = async (
 				(collectionId, index) => `
 		collection${index}: collection(id: "gid://shopify/Collection/${collectionId}") {
 		  products(${filters}) {
-			pageInfo {
-			  hasNextPage
-			  endCursor
-			}
 			edges {
 			  node {
 				id
@@ -251,27 +246,18 @@ export const getProductsFromCollections = async (
 
 	const response = await pushToShopifyAdmin({ query })
 	const allProducts: ProductEdgeNode[] = []
-	const pageInfos: { hasNextPage: boolean; endCursor: string | null }[] = []
 
 	collections.forEach((_, index) => {
 		const collectionKey = `collection${index}`
 		const productEdges =
 			response.data?.[collectionKey]?.products?.edges ?? []
-		const pageInfo = response.data?.[collectionKey]?.products?.pageInfo ?? {
-			hasNextPage: false,
-			endCursor: null,
-		}
 
 		productEdges.forEach(({ node }: { node: ProductEdgeNode }) => {
 			allProducts.push(node)
 		})
-		pageInfos.push(pageInfo)
 	})
 
-	return {
-		products: allProducts.map(formatShopifyProduct),
-		pageInfos,
-	}
+	return allProducts.map(formatShopifyProduct)
 }
 
 interface GetProducts {
@@ -280,17 +266,10 @@ interface GetProducts {
 
 export const getProducts = async ({
 	filters = "",
-}: GetProducts): Promise<{
-	products: FormattedProduct[]
-	pageInfo: { hasNextPage: boolean; endCursor: string | null }
-}> => {
+}: GetProducts): Promise<FormattedProduct[]> => {
 	const query = `
     query {
       products(${filters}) {
-		pageInfo {
-		  hasNextPage
-		  endCursor
-		}
         edges {
           node {
             id
@@ -333,15 +312,8 @@ export const getProducts = async ({
 
 	const response = await pushToShopifyAdmin({ query })
 	const edges = response.data.products?.edges ?? []
-	const pageInfo = response.data.products?.pageInfo ?? {
-		hasNextPage: false,
-		endCursor: null,
-	}
 
-	return {
-		products: edges.map(({ node }: { node: ProductEdgeNode }) =>
-			formatShopifyProduct(node)
-		),
-		pageInfo,
-	}
+	return edges.map(({ node }: { node: ProductEdgeNode }) =>
+		formatShopifyProduct(node)
+	)
 }

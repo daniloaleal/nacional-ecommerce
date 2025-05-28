@@ -7,10 +7,9 @@ import { getProductsFromCollections } from "@/services/shopify"
 import { PlusSizeSlider } from "./plus-size-slider"
 
 export const PlusSize = async () => {
-	const products = await getProductsFromCollections(
-		["496502964544"],
-		"first: 10"
-	)
+	const products = (
+		await getProductsFromCollections(["496502964544"], "first: 10")
+	).products
 
 	return (
 		<section className="mx-auto mt-20 w-full max-w-[1289px] px-5">

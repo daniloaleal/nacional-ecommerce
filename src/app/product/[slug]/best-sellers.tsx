@@ -3,10 +3,9 @@ import { getProductsFromCollections } from "@/services/shopify"
 import { BestSellersSlider } from "./best-sellers-slider"
 
 export const BestSellers = async () => {
-	const products = await getProductsFromCollections(
-		["496639967552"],
-		"first: 10"
-	)
+	const products = (
+		await getProductsFromCollections(["496639967552"], "first: 10")
+	).products
 
 	return (
 		<section className="mt-16 space-y-10 px-5 lg:mt-36">
